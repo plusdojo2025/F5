@@ -7,7 +7,7 @@ public class Users implements Serializable {
 	private String password;	 //パスワード
 	private String nickname;	 //ニックネーム
 	private String email;		 //メールアドレス
-	private byte photo;			 //写真情報
+	private byte[] photo;			 //写真情報
 	private String created_at;	 //登録日
 	private String updated_at;	 //更新日
 	
@@ -44,11 +44,11 @@ public class Users implements Serializable {
 		this.email = email;
 	}
 
-	public byte getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(byte photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
@@ -69,7 +69,7 @@ public class Users implements Serializable {
 	}
 	
 //コンストラクタ(ソースメニュー →　フィールドを使用してコンストラクタを生成)
-	public Users(int user_id, String password, String nickname, String email, byte photo, String created_at,
+	public Users(int user_id, String password, String nickname, String email, byte[] photo, String created_at,
 			String updated_at) {
 		super();
 		this.user_id = user_id;
@@ -88,7 +88,6 @@ public class Users implements Serializable {
 		this.password = "";
 		this.nickname = "";
 		this.email = "";
-		this.photo = 0;
 		this.created_at = "";
 		this.updated_at = "";
 	}

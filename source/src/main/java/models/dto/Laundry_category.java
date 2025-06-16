@@ -3,8 +3,8 @@ package models.dto;
 import java.io.Serializable;
 
 public class Laundry_category implements Serializable {
-	private int laundry_category_id;	// カテゴリーID
-	private String laundry_category_name;	// カテゴリー名
+	private int laundry_category_id;	// 洗濯表示カテゴリーID
+	private String laundry_category_name;	// 洗濯表示名
 	
 	public int getLaundry_category_id() {
 		return laundry_category_id;
