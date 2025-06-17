@@ -13,9 +13,9 @@ import models.dto.Category;
 public class CategoryDAO {
 
 	/* 洗濯物カテゴリー名の全カテゴリーを取得してリストにして返す */
-	public List<Category> getAllCategories(Category catALL) {
+	public List<Category> getAllCategories() {
 		Connection conn = null;
-		List<Category> catList = new ArrayList<Category>();
+		List<Category> categoryList = new ArrayList<Category>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -36,14 +36,14 @@ public class CategoryDAO {
 			// １行づつ取り出し、結果をcatListにコピーする
 			while (rs.next()) {
 				Category cat = new Category(rs.getInt("category_id"), rs.getString("category_name"));
-				catList.add(cat);
+				categoryList.add(cat);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			catList = null;
+			categoryList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			catList = null;
+			categoryList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -51,13 +51,13 @@ public class CategoryDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					catList = null;
+					categoryList = null;
 				}
 			}
 		}
 
 		// 結果のリストを返す
-		return catList;
+		return categoryList;
 	}
 
 }
