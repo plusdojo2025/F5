@@ -3,11 +3,11 @@ package models.dto;
 import java.io.Serializable;
 
 public class Users implements Serializable {
-	private int user_id;		 //ユーザーID
+	private int    user_id;		 //ユーザーID
 	private String password;	 //パスワード
 	private String nickname;	 //ニックネーム
 	private String email;		 //メールアドレス
-	private byte[] photo;			 //写真情報
+	private byte[] photo;		 //写真情報
 	private String created_at;	 //登録日
 	private String updated_at;	 //更新日
 	
@@ -91,10 +91,5 @@ public class Users implements Serializable {
 		this.created_at = "";
 		this.updated_at = "";
 	}
-
-	
-
-
-	
 
 }
