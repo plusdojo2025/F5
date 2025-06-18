@@ -8,7 +8,7 @@ public class Clothes implements Serializable{
 	private byte[] clothes_img;      /*洋服画像データ*/
 	private int category_id;	           /* カテゴリーID*/
 	private String remarks;	           /*洗い方メモ*/
-	private int users_id;			       /*役職名*/
+	private int user_id;			       /*役職名*/
 	private Boolean favorite;				/* お気に入り */
 	private String created_at;			/*登録日*/
 	private String updated_at;	    /* 更新日 */
@@ -20,7 +20,7 @@ public class Clothes implements Serializable{
 		this.clothes_img = clothes_img;
 		this.category_id = category_id;
 		this.remarks = remarks;
-		this.users_id = users_id;
+		this.user_id = users_id;
 		this.favorite = favorite;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
@@ -51,10 +51,10 @@ public class Clothes implements Serializable{
 		this.remarks = remarks;
 	}
 	public int getUsers_id() {
-		return users_id;
+		return user_id;
 	}
 	public void setUsers_id(int users_id) {
-		this.users_id = users_id;
+		this.user_id = users_id;
 	}
 	public Boolean getFavorite() {
 		return favorite;
@@ -80,7 +80,7 @@ public class Clothes implements Serializable{
 		this.clothes_id = 0;
 		this.category_id = 0;
 		this.remarks = "";
-		this.users_id = 0;
+		this.user_id = 0;
 		this.favorite = false;
 		this.created_at = "";
 		this.updated_at = "";
