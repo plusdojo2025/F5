@@ -8,6 +8,7 @@ public class Washing_mark implements Serializable {
 	private String washing_mark_info;	// 洗濯表示情報
 	private int laundry_category_id;	// 洗濯表示カテゴリーID
 	private int washing_mark_number;	// 図柄番号
+	private String laundry_category_name; //カテゴリー名
 	
 	public int getWashing_id() {
 		return washing_id;
@@ -40,14 +41,23 @@ public class Washing_mark implements Serializable {
 		this.washing_mark_number = washing_mark_number;
 	}
 	
+	
+	public String getLaundry_category_name() {
+		return laundry_category_name;
+	}
+	public void setLaundry_category_name(String laundry_category_name) {
+		this.laundry_category_name = laundry_category_name;
+	}
+	
 	public Washing_mark(int washing_id, byte[] washing_mark_icon, String washing_mark_info, int laundry_category_id,
-			int washing_mark_number) {
+			int washing_mark_number, String laundry_category_name) {
 		super();
 		this.washing_id = washing_id;
 		this.washing_mark_icon = washing_mark_icon;
 		this.washing_mark_info = washing_mark_info;
 		this.laundry_category_id = laundry_category_id;
 		this.washing_mark_number = washing_mark_number;
+		this.laundry_category_name = laundry_category_name;
 	}
 	public Washing_mark() {
 		super();
@@ -55,5 +65,6 @@ public class Washing_mark implements Serializable {
 		this.washing_mark_info = "";
 		this.laundry_category_id = 0;
 		this.washing_mark_number = 0;
+		this.laundry_category_name = "";
 	}
 }
