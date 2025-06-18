@@ -7,9 +7,9 @@ import models.dto.Clothes;
 
 public class test {
 
-	/* catList の中にある各カテゴリー名を取り出して表示 */
-	public static void showAllData(List<Clothes> ClothesList) {
-		for (Clothes clothes : ClothesList) {
+	/* ユーザーが所持している洗濯物の中でお気に入りを表示*/
+	public static void showAllData(List<Clothes> clothesList) {
+		for (Clothes clothes : clothesList) {
 			System.out.println("洗濯物ID：" + clothes.getClothes_id());
 			System.out.println("洗濯物画像：" + clothes.getClothes_img());
 			System.out.println("カテゴリーID：" + clothes.getCategory_id());
@@ -24,12 +24,12 @@ public class test {
 	}
 
 	public static void main(String[] args) {
-		Test dao = new akamineTest();
+		akamineTest dao = new akamineTest();
 
 		// select()のテスト1
 		System.out.println("---------- select()のテスト1 ----------");
-		List<Clothes> catListSel1 = dao.getAllclothes();
-		Test.showAllData(catListSel1);
+		List<Clothes> clothesList = dao.FavoriteSearch(1);
+        showAllData(clothesList);
 
 	}
 

@@ -50,11 +50,11 @@ public class Clothes implements Serializable{
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public int getUsers_id() {
+	public int getUser_id() {
 		return user_id;
 	}
-	public void setUsers_id(int users_id) {
-		this.user_id = users_id;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	public Boolean getFavorite() {
 		return favorite;

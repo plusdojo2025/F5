@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.dto.Clothes;
+import models.dto.JoinLandry;
 
 public class akamineTest {
 	
-	/* ユーザーが所持している全ての洗濯物を取得してリストにして返す */
-	public List<Clothes> getAllclothes(int user_id) {
+	/* 洗濯物の絞りこみ検索 */
+	public List<JoinLandry> GetLaundryUDSelect(int user_id) {
 		Connection conn = null;
-		List<Clothes> clothesList = new ArrayList<Clothes>();
+		List<JoinLandry> SearchList = new ArrayList<JoinLandry>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -27,18 +27,20 @@ public class akamineTest {
 					"root", "password");
 
 			// SQL文をセットする
-			String sql = "SELECT clothes_id, clothes_img, favorite, user_id FROM clothes WHERE user_id = ?";
+			String sql = "SELECT clothes_id, clothes_img, category_id, remarks, user_id, favorite, created_at, updated_at "
+			           + "FROM clothes "
+			           + "WHERE user_id = ? AND favorite = true";
 			
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setInt(1, user_id);
-
 
 			// SQL文を実行し、結果をrsへ格納
 			ResultSet rs = pStmt.executeQuery();
 
 			// １行づつ取り出し、結果をclothesListにコピーする
 			while (rs.next()) {
-				Clothes clo = new Clothes(
+				JoinLandry ser = new JoinLandry(
+						
 						rs.getInt("clothes_id"),
 						rs.getBytes("clothes_img"),
 						rs.getInt("category_id"),
@@ -47,15 +49,16 @@ public class akamineTest {
 						rs.getBoolean("favorite"),
 						rs.getString("created_at"),
 						rs.getString("updated_at")
+						
 					);
-				clothesList.add(clo);
+				SearchList.add(ser);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			clothesList = null;
+			SearchList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			clothesList = null;
+			SearchList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -63,13 +66,13 @@ public class akamineTest {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					clothesList = null;
+					SearchList = null;
 				}
 			}
 		}
 
 		// 結果のリストを返す
-		return clothesList;
+		return SearchList;
 	}
 
 }
