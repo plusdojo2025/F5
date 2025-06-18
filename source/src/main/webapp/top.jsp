@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
     </div>
     <nav class="nav">
         <ul>
-            <li><a href="/LoginServlet">ログイン</a></li>
+            <li><a href="${pageContext.request.contextPath}/LoginServlet">ログイン</a></li> 
             <li><a href="user_regist.jsp">新規登録</a></li>
         </ul>
     </nav>

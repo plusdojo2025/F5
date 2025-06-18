@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1 class="main-title">せんたくびより</h1>
+<h2 class="subtitle">～wash of life～</h2>
 </body>
 </html>
