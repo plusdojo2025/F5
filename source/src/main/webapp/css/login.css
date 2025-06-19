@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* すべてのページに適用-ヘッダー（ログイン前のヘッダーは個別で作ってます）  */
+.header {
+    background-color: #C9E4F4;
+    padding: 30px;
+    text-align: center;
+}
+.main-title {
+    font-size: 60px;
+    margin: 0;
+    color: #807B84;
+}
+.subtitle {
+    font-size: 30px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+.nav {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+}
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+.nav a {
+    text-decoration: none;
+    font-size: 30px;
+    color: #807B84;  
+    padding: 16px 40px; 
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+/* すべてのページに適用-ログイン*/
+.login_form {
+    width :900px;
+    margin: 40px auto;
+}
+.form_row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.form_row label {
+    width: 400px;
+    text-align: right;
+    margin-right: 50px;
+    font-size: 40px;
+    color: #807B84;
+}
+.form_row input {
+    flex: 2;
+    padding: 25px;
+    font-size: 20px;
+    border: 1px solid #000000;
+}
+button[type="submit"] {
+    display: block;   
+    margin: 100px auto;  
+    padding: 15px 40px;
+    background-color: #ffffff;
+    color: #807B84;
+    border: none;
+    border-radius: 30px;
+    font-size: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+.user_regist_button {
+    text-align: center;
+    margin-top: 0px;
+}
+.user_regist_button a {
+    color: #807B84;       
+    font-size: 20px;        
+    font-weight: bold;      
+    text-decoration: underline; 
+}

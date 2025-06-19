@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* すべてのページに適用-ヘッダー（ログイン前のヘッダーは個別で作ってます）  */
+.header {
+    background-color: #C9E4F4;
+    padding: 30px;
+    text-align: center;
+}
+.main-title {
+    font-size: 60px;
+    margin: 0;
+    color: #807B84;
+}
+.subtitle {
+    font-size: 30px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+.nav {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+}
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+.nav a {
+    text-decoration: none;
+    font-size: 30px;
+    color: #807B84;  
+    padding: 16px 40px; 
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+/* すべてのページに適用-トップ */
+.image-top {
+    display: flex;
+    justify-content: center;
+    gap: 270px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.image-top img {
+    width: 160px;
+    height: auto;
+}
+.text-top {
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-bottom: 50px;
+}
+.text-top p {
+    font-size: 20px;
+    width :220px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.regist2_button {
+    margin-top: 40px;
+    text-align: center;
+}
+.regist2_button a {
+    background-color: #6CA9F9;
+    color: white;
+    text-decoration: none;
+    padding: 30px 300px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
