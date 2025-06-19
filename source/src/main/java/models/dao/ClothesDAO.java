@@ -6,11 +6,222 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import models.dto.Clothes;
+import models.dto.JoinLandry;
 
 public class ClothesDAO {
+	
+	/* ユーザーが所持している全ての洗濯物を取得してリストにして返す */
+	public List<Clothes> getAllclothes(int user_id) {
+		Connection conn = null;
+		List<Clothes> clothesList = new ArrayList<Clothes>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SQL文をセットする
+			String sql = "SELECT clothes_id, clothes_img, category_id, remarks, user_id, favorite, created_at, updated_at FROM clothes WHERE user_id = ?";
+
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setInt(1, user_id);
+
+
+			// SQL文を実行し、結果をrsへ格納
+			ResultSet rs = pStmt.executeQuery();
+
+			// １行づつ取り出し、結果をclothesListにコピーする
+			while (rs.next()) {
+				Clothes clo = new Clothes(
+						rs.getInt("clothes_id"),
+						rs.getBytes("clothes_img"),
+						rs.getInt("category_id"),
+						rs.getString("remarks"),
+						rs.getInt("user_id"),
+						rs.getBoolean("favorite"),
+						rs.getString("created_at"),
+						rs.getString("updated_at")
+					);
+				clothesList.add(clo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			clothesList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			clothesList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					clothesList = null;
+				}
+			}
+		}
+
+		// 結果のリストを返す
+		return clothesList;
+	}
+	
+	/* 洗濯物の絞りこみ検索 */
+	public List<Clothes> FavoriteSearch(int user_id) {
+		Connection conn = null;
+		List<Clothes> favoriteList = new ArrayList<Clothes>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SQL文をセットする
+			String sql = "SELECT clothes_id, clothes_img, category_id, remarks, user_id, favorite, created_at, updated_at "
+			           + "FROM clothes "
+			           + "WHERE user_id = ? AND favorite = true";
+			
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setInt(1, user_id);
+
+			// SQL文を実行し、結果をrsへ格納
+			ResultSet rs = pStmt.executeQuery();
+
+			// １行づつ取り出し、結果をclothesListにコピーする
+			while (rs.next()) {
+				Clothes ser = new Clothes(
+					rs.getInt("clothes_id"),
+						rs.getBytes("clothes_img"),
+						rs.getInt("category_id"),
+						rs.getString("remarks"),
+						rs.getInt("user_id"),
+						rs.getBoolean("favorite"),
+						rs.getString("created_at"),
+						rs.getString("updated_at")
+					);
+				favoriteList.add(ser);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			favoriteList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			favoriteList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					favoriteList = null;
+				}
+			}
+		}
+
+		// 結果のリストを返す
+		return favoriteList;
+	}
+
+	/* ユーザーIDと洗濯物IDを指定してユーザーが所持している洗濯物１つを編集と削除 */
+	public List<JoinLandry> GetLaundryUDSelect(int user_id, int clothes_id) {
+		Connection conn = null;
+		List<JoinLandry> LaundryUDList = new ArrayList<JoinLandry>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SQL文をセットする
+			String sql = 
+				    "SELECT "
+				    + "c.user_id, "
+				    + "c.clothes_id, "
+				    + "c.clothes_img, "
+				    + "c.remarks, "
+				    + "c.favorite, "
+				    + "c.created_at, "
+				    + "c.updated_at, "
+				    + "c.category_id, "
+				    + "cm.category_name, "
+				    + "wm.washing_mark_id, "
+				    + "wm.washing_mark_icon, "
+				    + "wm.washing_mark_number, "
+				    + "lcm.laundry_category_id, "
+				    + "lcm.laundry_category_name "
+				    + "FROM clothes AS c "
+				    + "INNER JOIN category_mst AS cm ON c.category_id = cm.category_id "
+				    + "LEFT JOIN clothes_mark cmk ON c.clothes_id = cmk.clothes_id "
+				    + "LEFT JOIN washing_mark_mst AS wm ON cmk.washing_mark_id = wm.washing_mark_id "
+				    + "LEFT JOIN laundry_category_mst AS lcm ON wm.laundry_category_id = lcm.laundry_category_id "
+				    + "WHERE c.user_id = ? AND c.clothes_id = ?";
+			
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setInt(1, user_id);
+            pStmt.setInt(2, clothes_id);
+
+			// SQL文を実行し、結果をrsへ格納
+			ResultSet rs = pStmt.executeQuery();
+
+			// １行づつ取り出し、結果をclothesListにコピーする
+			while (rs.next()) {
+				JoinLandry jl = new JoinLandry(
+					    rs.getInt("user_id"),
+					    rs.getInt("clothes_id"),
+					    rs.getBytes("clothes_img"),
+					    rs.getString("remarks"),
+					    rs.getBoolean("favorite"),
+					    rs.getString("created_at"),
+					    rs.getString("updated_at"),
+					    rs.getInt("category_id"),
+					    rs.getString("category_name"),
+					    rs.getInt("washing_mark_id"),
+					    rs.getBytes("washing_mark_icon"),
+					    rs.getInt("washing_mark_number"),
+					    rs.getInt("laundry_category_id"),
+					    rs.getString("laundry_category_name")
+					);
+				LaundryUDList.add(jl);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			LaundryUDList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			LaundryUDList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					LaundryUDList = null;
+				}
+			}
+		}
+
+		// 結果のリストを返す
+		return LaundryUDList;
+	}
+	
 	// 登録処理
 	public boolean insert(Clothes clothes, List<Integer> washingMarkIds) {
         Connection conn = null;
