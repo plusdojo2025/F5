@@ -2,6 +2,7 @@ package controller.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +34,8 @@ public class TopServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.invalidate();
 
-				// ログインページにリダイレクトする
-				response.sendRedirect("user/login.jsp");	
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+				dispatcher.forward(request, response);	
 	}
 
 }
