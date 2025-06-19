@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.dao.LogDAO;
 import models.dao.Washing_markDAO;
@@ -22,15 +23,15 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
+		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
-				if (session.getAttribute("email") == null) {
+				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/F5/LoginServlet");
 					return;
 				}
 
-		*/
+		
 		
 		//洗濯表示をデータベースから取得する。
 		Washing_markDAO wdao = new Washing_markDAO();

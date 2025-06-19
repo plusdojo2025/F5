@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/users/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -47,7 +47,8 @@ public class LoginServlet extends HttpServlet {
 		LoginDAO iDao = new LoginDAO();
 		UsersDAO uDao = new UsersDAO();
 		Users user = uDao.login_select(email);
-		
+		boolean ans = iDao.isLoginOK(new Users(0, password, "", email, null, "", ""));
+		System.out.print(ans);
 		if (iDao.isLoginOK(new Users(0, password, "", email, null, "", ""))) { // ログイン成功
 			// セッションスコープにメールアドレスを格納する
 			HttpSession session = request.getSession();
@@ -56,14 +57,12 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user_id", user_id);
 
 			// ホームページにリダイレクトする
-			response.sendRedirect("servlet/HomeServlet");
+			response.sendRedirect("/F5/HomeServlet");
 		} else { // ログイン失敗
 			// リクエストスコープに、エラーメッセージを格納する
 			request.setAttribute("error", "メールアドレスまたはパスワードが間違っています");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
 		}
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request, response);
 	}
-
 }

@@ -26,11 +26,11 @@
             <div class="login_form_btm">
                 <div class="form_row">
                     <label for="id">メールアドレス</label>
-                    <input type="email" name="id" id="id" placeholder="メールアドレスを入力してください">
+                    <input type="email" name="email" id="id" placeholder="メールアドレスを入力してください">
                 </div>
                 <div class="form_row">
                     <label for="pw">パスワード</label>
-                    <input type="password" name="pw" id="pw" placeholder="パスワードを入力してください">
+                    <input type="password" name="password" id="pw" placeholder="パスワードを入力してください">
                 </div>
             </div>
             <button type="submit">ログイン</button>
