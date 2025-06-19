@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.dao.LoginDAO;
+import models.dao.UsersDAO;
 import models.dto.Users;
 
 /**
@@ -44,11 +45,15 @@ public class LoginServlet extends HttpServlet {
 
 		// ログイン処理を行う
 		LoginDAO iDao = new LoginDAO();
+		UsersDAO uDao = new UsersDAO();
+		Users user = uDao.login_select(email);
+		
 		if (iDao.isLoginOK(new Users(0, password, "", email, null, "", ""))) { // ログイン成功
 			// セッションスコープにメールアドレスを格納する
 			HttpSession session = request.getSession();
 			// session.setAttribute("id", new LoginUser(id));//
-			session.setAttribute("email", email);
+			int user_id = user.getUser_id();
+			session.setAttribute("user_id", user_id);
 
 			// ホームページにリダイレクトする
 			response.sendRedirect("servlet/HomeServlet");
