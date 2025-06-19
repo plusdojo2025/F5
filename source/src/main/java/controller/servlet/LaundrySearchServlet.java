@@ -15,10 +15,10 @@ import models.dao.ClothesDAO;
 import models.dto.Clothes;
 
 /**
- * Servlet implementation class LaundryServlet
+ * Servlet implementation class LaundrySearchServlet
  */
-@WebServlet("/LaundryServlet")
-public class LaundryServlet extends HttpServlet {
+@WebServlet("/LaundrySearchServlet")
+public class LaundrySearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -37,7 +37,6 @@ public class LaundryServlet extends HttpServlet {
 		// 洗濯物一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 	/**
@@ -46,27 +45,26 @@ public class LaundryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		// もしもログインしていなかったらトップサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/servlet/TopServlet");
 			return;
 		}
+		
 		/* セッションスコープ保持しているユーザーIDをint型へ変換 */
 		int user_id = (int) session.getAttribute("user_id");
-		
+
 		/* クローズDAOのインスタンスを生成 */
 		ClothesDAO dao = new ClothesDAO();
-		List<Clothes> clothesList = dao.getAllclothes(user_id);
+		List<Clothes> favoriteList = dao.FavoriteSearch(user_id);
 
 		// リクエストスコープに保存
-		request.setAttribute("clothesList", clothesList);
+		request.setAttribute("clothesList", favoriteList);
 
 		// 洗濯表示一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 }
