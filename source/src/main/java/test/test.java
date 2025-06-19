@@ -3,21 +3,30 @@ package test;
 import java.util.List;
 
 import models.dao.akamineTest;
-import models.dto.Clothes;
+import models.dto.JoinLandry;
 
 public class test {
 
-	/* ユーザーが所持している洗濯物の中でお気に入りを表示*/
-	public static void showAllData(List<Clothes> clothesList) {
-		for (Clothes clothes : clothesList) {
-			System.out.println("洗濯物ID：" + clothes.getClothes_id());
-			System.out.println("洗濯物画像：" + clothes.getClothes_img());
-			System.out.println("カテゴリーID：" + clothes.getCategory_id());
-			System.out.println("洗い方メモ：" + clothes.getRemarks());
-			System.out.println("ユーザーID：" + clothes.getUser_id());
-			System.out.println("お気に入り：" + clothes.getFavorite());
-			System.out.println("登録日：" + clothes.getCreated_at());
-			System.out.println("更新日：" + clothes.getUpdated_at());
+	/* ユーザーが所持している洗濯物の中で１つだけ洗濯し、更新と削除*/
+	public static void showAllData(List<JoinLandry> joinLandryList) {
+		for (JoinLandry joinLandry : joinLandryList) {
+		    System.out.println("ユーザーID" + joinLandry.getUser_id());
+		    System.out.println("洗濯物ID" + joinLandry.getClothes_id());
+		    System.out.println("洗濯物画像" + joinLandry.getClothes_img());
+		    System.out.println("洗い方メモ" + joinLandry.getRemarks());
+		    System.out.println("お気に入り" + joinLandry.getFavorite());
+		    System.out.println("登録日" + joinLandry.getCreated_at());
+		    System.out.println("更新日" + joinLandry.getUpdated_at());
+
+		    System.out.println("カテゴリーID" + joinLandry.getCategory_id());
+		    System.out.println("カテゴリー名" + joinLandry.getCategory_name());
+
+		    System.out.println("洗濯表示ID" + joinLandry.getWashing_mark_id());
+		    System.out.println("洗濯表示画像" + joinLandry.getWashing_mark_icon());
+		    System.out.println("図柄番号" + joinLandry.getWashing_mark_number());
+
+		    System.out.println("洗濯物カテゴリーID" + joinLandry.getLaundry_category_id());
+		    System.out.println("洗濯物カテゴリー名" + joinLandry.getLaundry_category_name());
 
 			System.out.println();
 		}
@@ -28,8 +37,8 @@ public class test {
 
 		// select()のテスト1
 		System.out.println("---------- select()のテスト1 ----------");
-		List<Clothes> clothesList = dao.FavoriteSearch(1);
-        showAllData(clothesList);
+		List<JoinLandry> LaundryUDList = dao.GetLaundryUDSelect(1, 1);
+        showAllData(LaundryUDList);
 
 	}
 
