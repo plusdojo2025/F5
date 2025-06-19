@@ -58,7 +58,7 @@ public class HomeServlet extends HttpServlet {
 		
 		// リクエストディスパッチャオブジェクトを取得する
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("/WEB-INF/jsp/users/home.jsp");
+				request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		// フォワードする
 		dispatcher.forward(request, response);
 	}

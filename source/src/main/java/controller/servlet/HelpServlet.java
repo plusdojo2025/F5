@@ -28,7 +28,7 @@ public class HelpServlet extends HttpServlet {
 		*/
 		// リクエストディスパッチャオブジェクトを取得する
 				RequestDispatcher dispatcher = 
-						request.getRequestDispatcher("/WEB-INF/jsp/help/help.jsp");
+						request.getRequestDispatcher("/WEB-INF/jsp/help.jsp");
 				// フォワードする
 				dispatcher.forward(request, response);
 	}

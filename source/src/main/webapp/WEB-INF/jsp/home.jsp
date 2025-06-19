@@ -13,8 +13,10 @@
 <h2 class="subtitle">～wash of life～</h2>
 <!-- logtest -->
 <p>ログの情報<p>
-
-
+<c:forEach var="log" items="${logList}">
+	<p>${log.log_info}<p>
+</c:forEach>
+<p>画像の表示</p>
 <c:set var="categoryname" value=""/>
 <c:forEach var="mark" items="${Washing_markList}">
 	<!-- categorynameとmark.laundry_category_nameが違ったら-->
@@ -23,6 +25,7 @@
         <c:set var="categoryname" value="${mark.laundry_category_name}" />
     </c:if>
   <p>${mark.washing_mark_info}</p> 
+  <img src="${mark.washing_mark_icon}">
 </c:forEach>
 </body>
 </html>

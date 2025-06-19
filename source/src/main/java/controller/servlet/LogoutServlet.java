@@ -17,19 +17,19 @@ public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// セッションスコープを破棄する
+		HttpSession session = request.getSession();
+		session.invalidate();
+
+		// ログインページにリダイレクトする slack全体チャンネルの書き方
+		response.sendRedirect(request.getContextPath() + "/TopServlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// セッションスコープを破棄する
-			HttpSession session = request.getSession();
-			session.invalidate();
-
-				// ログインページにリダイレクトする slack全体チャンネルの書き方
-				response.sendRedirect(request.getContextPath() + "/LoginServlet");
+		
 	}
 
 }
