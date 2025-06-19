@@ -17,7 +17,7 @@
     </div>
     <nav class="nav">
         <ul>
-            <li><a href="/jsp/index.jsp">戻る</a></li>
+            <li><a href="/F5/TopServlet">戻る</a></li>
         </ul>
     </nav>
 </header>

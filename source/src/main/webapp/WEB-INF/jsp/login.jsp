@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>せんたくびより</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
@@ -44,11 +45,7 @@
 </main>
 <!-- メインここまで -->
 
-<!-- フッターここから -->
-<footer>
-    <p class="copyright">&copy; せんたくびより</p>
-</footer>
-<!-- フッターここまで -->
+<!-- フッターは共通 -->
 
 </body>
 </html>
