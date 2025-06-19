@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>せんたくびより | ホーム画面</title>
+<ul>
+<li><a href="/F5/contoller/HomeServlet">ホーム</a></li>
+                <li><a href="${pageContext.request.contextPath}/LaundryRegistServlet">洗濯物登録</a></li>
+                <li><a href="${pageContext.request.contextPath}/LaundryServlet">洗濯物一覧</a></li>
+                <li><a href="${pageContext.request.contextPath}/HelpServlet">ヘルプ</a></li>
+                <li><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
+</ul>
 </head>
 <body>
 <h1 class="main-title">せんたくびより</h1>
