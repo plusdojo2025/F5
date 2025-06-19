@@ -49,9 +49,9 @@ public class ClothesDAO {
 			} else {
 				pStmt.setString(3, "");
 			}
-            Integer Users_id = clothes.getUsers_id();
+            Integer Users_id = clothes.getUser_id();
             if (Users_id != null) {
-                pStmt.setInt(4, clothes.getUsers_id());
+                pStmt.setInt(4, clothes.getUser_id());
             } else {
                 pStmt.setNull(4, java.sql.Types.INTEGER);
             }
@@ -135,7 +135,7 @@ public class ClothesDAO {
 			
 			
 			pStmt.setInt(1, clothes.getClothes_id());
-			pStmt.setInt(2, clothes.getUsers_id());	
+			pStmt.setInt(2, clothes.getUser_id());	
 			
 			
 			if (pStmt.executeUpdate() > 0) {
@@ -210,13 +210,13 @@ public class ClothesDAO {
             }
             Integer Clothes_id =  clothes.getClothes_id();
             if (Clothes_id != null) {
-                pStmt.setNull(5, clothes.getClothes_id());
+                pStmt.setInt(5, clothes.getClothes_id());
             } else {
                 pStmt.setNull(5, java.sql.Types.INTEGER);
             }
-            Integer Users_id = clothes.getUsers_id();
+            Integer Users_id = clothes.getUser_id();
             if (Users_id != null) {
-                pStmt.setInt(6, clothes.getUsers_id());
+                pStmt.setInt(6, clothes.getUser_id());
             } else {
                 pStmt.setNull(6, java.sql.Types.INTEGER);
             }
@@ -227,10 +227,14 @@ public class ClothesDAO {
  			}
  			
  			// 洗濯表示を削除
- 			String delsql = "DELETE FROM clothes_mark WHERE clothes_id = ?";
+ 			String delsql = "DELETE cm "
+ 					+ "FROM clothes_mark cm "
+ 					+ "INNER JOIN clothes c ON cm.clothes_id = c.clothes_id "
+ 					+ "WHERE c.clothes_id = ? AND c.user_id = ?;";
  			PreparedStatement pStmt2 = conn.prepareStatement(delsql);
  			
  			pStmt2.setInt(1, clothes.getClothes_id());
+ 			pStmt2.setInt(2, clothes.getUser_id());
 			
  			// SQL文を実行する
  			if (pStmt2.executeUpdate() == 1) {
@@ -240,18 +244,28 @@ public class ClothesDAO {
  			// clothes_mark テーブルにINSERT（洗濯表示）
             if (washingMarkIds != null && !washingMarkIds.isEmpty()) {
                 String marksql = "INSERT INTO clothes_mark (clothes_id, washing_mark_id) VALUES (?, ?)";
+                String checksql = "SELECT user_id FROM clothes WHERE clothes_id = ?";
                 PreparedStatement pStmt3 = conn.prepareStatement(marksql);
-
-                for (Integer markId : washingMarkIds) {
-                    pStmt3.setInt(1, clothes.getClothes_id());
-                    pStmt3.setInt(2, markId);
-                    pStmt3.addBatch();
-                }
-                pStmt3.executeBatch();
-                pStmt3.close();
+                PreparedStatement pStmt4 = conn.prepareStatement(checksql);
+                
+                pStmt4.setInt(1, clothes.getClothes_id());
+                
+                ResultSet rs = pStmt4.executeQuery();
+                
+                if(rs.next()) {
+                	int checkUser = rs.getInt("user_id");
+                	if (checkUser == clothes.getUser_id()) {
+		                for (Integer markId : washingMarkIds) {
+		                    pStmt3.setInt(1, clothes.getClothes_id());
+		                    pStmt3.setInt(2, markId);
+		                    pStmt3.addBatch();
+		                }
+			                pStmt3.executeBatch();
+			                pStmt3.close();
+                	}
+                			conn.commit();
+	            }
             }
-            
-            conn.commit();
  			
 		}catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
