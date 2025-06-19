@@ -26,7 +26,7 @@ public class UserRegistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// 新規登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/users/user_regist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_regist.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -46,7 +46,7 @@ public class UserRegistServlet extends HttpServlet {
 		// パスワード確認
 	    if (!password.equals(password_check)) {
 	        request.setAttribute("error", "パスワードが一致しません。");
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/users/user_regist.jsp");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_regist.jsp");
 	        dispatcher.forward(request, response);
 	        return;
 	    }
@@ -54,10 +54,10 @@ public class UserRegistServlet extends HttpServlet {
 		// 登録処理を行う
 		UsersDAO dao = new UsersDAO();
 		if (dao.insert(new Users(0, password, nickname, email, null, "", ""))) {
-			response.sendRedirect("servlet/LoginServlet");; // 登録成功後、ログインページへリダイレクト
+			response.sendRedirect("/WEB-INF/jsp/login.jsp");; // 登録成功後、ログインページへリダイレクト
 		} else { // 登録失敗
 			request.setAttribute("error", "登録に失敗しました");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/users/user_regist.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_regist.jsp");
 			dispatcher.forward(request, response);
 		}
 	

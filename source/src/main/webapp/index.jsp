@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>せんたくびより</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/top.css">
 </head>
 
 <body>
@@ -27,9 +28,9 @@
 <!-- メインここから -->
 <main class="main-top">
     <div class="image-top">
-        <img src="images/washing_mark.png" alt="洗濯表示一覧">
-        <img src="images/laundry_regist.png" alt="洋服登録">
-        <img src="images/memo.png" alt="メモ">
+        <img src="img/washing_mark.png" alt="洗濯表示一覧">
+        <img src="img/laundry_regist.png" alt="洋服登録">
+        <img src="img/memo.png" alt="メモ">
     </div>
 
     <div class="text-top">
@@ -44,10 +45,6 @@
 </main>
 <!-- メインここまで -->
 
-<!-- フッターここから -->
-<footer>
-    <p class="copyright">&copy; せんたくびより</p>
-</footer>
-<!-- フッターここまで -->
+<!-- フッターは共通 -->
 </body>
 </html>
