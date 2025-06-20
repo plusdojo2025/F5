@@ -252,7 +252,6 @@ public class ClothesDAO {
 	public boolean insert(Clothes clothes, List<Integer> washingMarkIds) {
         Connection conn = null;
         boolean result = false;
-        int registmaCount = 0;
 
         try {
         	// JDBCドライバを読み込む
@@ -322,16 +321,12 @@ public class ClothesDAO {
                     pStmt2.setInt(2, markId);
                     pStmt2.addBatch();
                 }
-                int[] markresult = pStmt2.executeBatch();
+                pStmt2.executeBatch();
                 pStmt2.close();
-                
-                for (int count : markresult) {
-                	registmaCount += count;
-                }
             }
             
             // ログ登録
-            if (registclCount == 1 && registmaCount == washingMarkIds.size()) {
+            if (registclCount == 1) {
             	String logsql = "INSERT INTO log(log_id, log_info, user_id, created_at) VALUES (0, ?, ?, NOW())";
 				PreparedStatement pStmt3 = conn.prepareStatement(logsql);
 				
@@ -439,7 +434,6 @@ public class ClothesDAO {
 	public boolean update(Clothes clothes, List<Integer> washingMarkIds) {
 		Connection conn = null;
 		boolean result = false;
-		int updatemaCount = 0;
 		
 		try {
         	// JDBCドライバを読み込む
@@ -504,7 +498,7 @@ public class ClothesDAO {
  			pStmt2.setInt(2, clothes.getUser_id());
 			
  			// SQL文を実行する
- 			int updelCount = pStmt2.executeUpdate();
+ 			pStmt2.executeUpdate();
  			
  			// clothes_mark テーブルにINSERT（洗濯表示）
             if (washingMarkIds != null && !washingMarkIds.isEmpty()) {
@@ -525,17 +519,13 @@ public class ClothesDAO {
 		                    pStmt3.setInt(2, markId);
 		                    pStmt3.addBatch();
 		                }
-		                int[] markresult = pStmt3.executeBatch();
+		                pStmt3.executeBatch();
 		                pStmt3.close();
-		                
-		                for (int count : markresult) {
-	                		updatemaCount += count;
-		                }
                 	}
 	            }
             }
             
-            if (updateclCount == 1 && updelCount == 1 && updatemaCount == washingMarkIds.size()) {
+            if (updateclCount == 1) {
             	String logsql = "INSERT INTO log(log_id, log_info, user_id, created_at) VALUES (0, ?, ?, NOW())";
 				PreparedStatement pStmt3 = conn.prepareStatement(logsql);
 				

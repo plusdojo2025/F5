@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ import javax.servlet.http.Part;
 import models.dao.ClothesDAO;
 import models.dto.Clothes;
 
-
+@MultipartConfig
 @WebServlet("/LaundryRegistServlet")
 public class LaundryRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +37,7 @@ public class LaundryRegistServlet extends HttpServlet {
 //		}
 		
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/users/laundry_regist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry_regist.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -72,22 +73,27 @@ public class LaundryRegistServlet extends HttpServlet {
 		boolean favorite = Boolean.parseBoolean(request.getParameter("favorite"));
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
 		
-		// リストに変換
-		String para = request.getParameter("washing_mark");
-		String[] washing_marks = (para != null) ? para.split(",") : new String[0];
+		// 洗濯表示ID取得してwashingMarkIdsリストに格納
+		String[] markid = request.getParameterValues("washing_mark");
 		List<Integer> washingMarkIds = new ArrayList<>();
-		for (int i=0; i<washing_marks.length; i++) {
-			String markId = washing_marks[i].trim();
-			washingMarkIds.add(Integer.parseInt(markId));
+		if (markid != null) {
+			for (int i=0; i<markid.length; i++) {
+				int value = Integer.parseInt(markid[i]);
+				washingMarkIds.add(value);
+			}
 		}
 		
 		// 登録処理
 		ClothesDAO dao = new ClothesDAO();
-		dao.insert(new Clothes(0, clothes_img, category_id, remarks, user_id, favorite, null, null), washingMarkIds);
-		
-		// 同じ画面にリダイレクト
-		response.sendRedirect(request.getContextPath() + request.getRequestURI());
-		
+		boolean success = dao.insert(new Clothes(0, clothes_img, category_id, remarks, user_id, favorite, null, null), washingMarkIds);
+		if (success) {
+			// 一覧にリダイレクト
+			response.sendRedirect("/F5/LaundryServlet");
+		}	else  {
+			request.setAttribute("error", "登録できませんでした");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry_regist.jsp");
+			dispatcher.forward(request, response);
+			}
 	}
 	
 	private byte[] getDefaultImage() throws IOException {

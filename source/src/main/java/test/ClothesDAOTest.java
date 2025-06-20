@@ -36,26 +36,26 @@ public class ClothesDAOTest {
 //        } else {
 //            System.out.println("登録失敗！");
 //        }
-//        
-//        // delete()のテスト
-//	    System.out.println("---------- delete()のテスト ----------");
-//	    Clothes clothesToDelete = new Clothes();
-//	    clothesToDelete.setClothes_id(13);  // 削除するclothes_id
-//        clothesToDelete.setUser_id(1);   // 対象ユーザーのID
-//
-//        // 削除処理を実行
-//        if (dao.delete(clothesToDelete)) {
-//            System.out.println("削除成功！");
-//        } else {
-//            System.out.println("削除失敗！");
-//        }
-//        
+        
+        // delete()のテスト
+	    System.out.println("---------- delete()のテスト ----------");
+	    Clothes clothesToDelete = new Clothes();
+	    clothesToDelete.setClothes_id(13);  // 削除するclothes_id
+        clothesToDelete.setUser_id(2);   // 対象ユーザーのID
+
+        // 削除処理を実行
+        if (dao.delete(clothesToDelete)) {
+            System.out.println("削除成功！");
+        } else {
+            System.out.println("削除失敗！");
+        }
+        
         // update()のテスト
         System.out.println("---------- update()のテスト ----------");
 
         // 更新するClothesオブジェクトを作成
-        Clothes updateRec = new Clothes(13, null, 3, "更新テスト3", 2, false, null, null);
-        List<Integer> newWashingMarkIds = Arrays.asList(1, 2);
+        Clothes updateRec = new Clothes(14, null, 3, "更新テスト4", 1, false, null, null);
+        List<Integer> newWashingMarkIds = Arrays.asList(3, 5);
 
         if (dao.update(updateRec, newWashingMarkIds)) {
             System.out.println("更新成功！");
