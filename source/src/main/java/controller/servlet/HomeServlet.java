@@ -9,12 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import models.dao.Laundry_categoryDAO;
 import models.dao.LogDAO;
 import models.dao.Washing_markDAO;
+import models.dto.Laundry_category;
 import models.dto.Log;
 import models.dto.Washing_mark;
+
 /**
  * Servlet implementation class HomeServlet
  */
@@ -23,7 +25,7 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
@@ -31,7 +33,11 @@ public class HomeServlet extends HttpServlet {
 					return;
 				}
 
-		
+		*/
+		//洗濯カテゴリー（漂白など）をデータベースから取得
+		Laundry_categoryDAO lcdao = new Laundry_categoryDAO();
+		List<Laundry_category> laundry_categoryList = lcdao.getLaundryCategory();
+		request.setAttribute("laundry_categoryList", laundry_categoryList);
 		
 		//洗濯表示をデータベースから取得する。
 		Washing_markDAO wdao = new Washing_markDAO();

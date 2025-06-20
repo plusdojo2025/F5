@@ -1,0 +1,13 @@
+@charset "UTF-8";
+#lud_cate{
+	background-color: #888;
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 2px 0 #000;
+    margin:0 300px 0 300px;
+}
+.img-row{
+	display:flex;
+	gap:20px;
+}
