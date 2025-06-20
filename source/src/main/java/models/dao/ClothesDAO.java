@@ -226,6 +226,7 @@ public class ClothesDAO {
 	public boolean insert(Clothes clothes, List<Integer> washingMarkIds) {
         Connection conn = null;
         boolean result = false;
+        int registmaCount = 0;
 
         try {
         	// JDBCドライバを読み込む
@@ -274,9 +275,7 @@ public class ClothesDAO {
             }
 
             // SQL文を実行する
-         	if (pStmt.executeUpdate() == 1) {
-         		result = true;
-            }
+         	int registclCount = pStmt.executeUpdate();
 
             // 自動生成されたclothes_idを取得
             int clothesId = -1;
@@ -297,12 +296,32 @@ public class ClothesDAO {
                     pStmt2.setInt(2, markId);
                     pStmt2.addBatch();
                 }
-                pStmt2.executeBatch();
+                int[] markresult = pStmt2.executeBatch();
                 pStmt2.close();
+                
+                for (int count : markresult) {
+                	registmaCount += count;
+                }
             }
-
-            conn.commit(); // コミット
-            result = true;
+            
+            // ログ登録
+            if (registclCount == 1 && registmaCount == washingMarkIds.size()) {
+            	String logsql = "INSERT INTO log(log_id, log_info, user_id, created_at) VALUES (0, ?, ?, NOW())";
+				PreparedStatement pStmt3 = conn.prepareStatement(logsql);
+				
+				pStmt3.setString(1, "洗濯物が登録されました");
+				pStmt3.setInt(2, clothes.getUser_id());
+				int logCount = pStmt3.executeUpdate();
+				
+				if (logCount == 1) {
+					conn.commit();
+					result = true;
+				} else {
+					conn.rollback();
+				}
+            }	else {
+            	conn.rollback();
+            }
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -349,13 +368,25 @@ public class ClothesDAO {
 			pStmt.setInt(2, clothes.getUser_id());	
 			
 			
-			if (pStmt.executeUpdate() > 0) {
-				conn.commit();
-				result = true;
-			}
+			int delCount = pStmt.executeUpdate();
 			
-			
-			
+			if (delCount == 1) {
+            	String logsql = "INSERT INTO log(log_id, log_info, user_id, created_at) VALUES (0, ?, ?, NOW())";
+				PreparedStatement pStmt3 = conn.prepareStatement(logsql);
+				
+				pStmt3.setString(1, "洗濯物が削除されました");
+				pStmt3.setInt(2, clothes.getUser_id());
+				int logCount = pStmt3.executeUpdate();
+				
+				if (logCount == 1) {
+					conn.commit();
+					result = true;
+				} else {
+					conn.rollback();
+				}
+            }	else {
+            	conn.rollback();
+            }	
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             try {
@@ -382,6 +413,7 @@ public class ClothesDAO {
 	public boolean update(Clothes clothes, List<Integer> washingMarkIds) {
 		Connection conn = null;
 		boolean result = false;
+		int updatemaCount = 0;
 		
 		try {
         	// JDBCドライバを読み込む
@@ -433,9 +465,7 @@ public class ClothesDAO {
             }
             
             // SQL文を実行する
- 			if (pStmt.executeUpdate() == 1) {
- 				result = true;
- 			}
+ 			int updateclCount = pStmt.executeUpdate();
  			
  			// 洗濯表示を削除
  			String delsql = "DELETE cm "
@@ -448,9 +478,7 @@ public class ClothesDAO {
  			pStmt2.setInt(2, clothes.getUser_id());
 			
  			// SQL文を実行する
- 			if (pStmt2.executeUpdate() == 1) {
- 				result = true;
- 			}
+ 			int updelCount = pStmt2.executeUpdate();
  			
  			// clothes_mark テーブルにINSERT（洗濯表示）
             if (washingMarkIds != null && !washingMarkIds.isEmpty()) {
@@ -471,11 +499,32 @@ public class ClothesDAO {
 		                    pStmt3.setInt(2, markId);
 		                    pStmt3.addBatch();
 		                }
-			                pStmt3.executeBatch();
-			                pStmt3.close();
+		                int[] markresult = pStmt3.executeBatch();
+		                pStmt3.close();
+		                
+		                for (int count : markresult) {
+	                		updatemaCount += count;
+		                }
                 	}
-                			conn.commit();
 	            }
+            }
+            
+            if (updateclCount == 1 && updelCount == 1 && updatemaCount == washingMarkIds.size()) {
+            	String logsql = "INSERT INTO log(log_id, log_info, user_id, created_at) VALUES (0, ?, ?, NOW())";
+				PreparedStatement pStmt3 = conn.prepareStatement(logsql);
+				
+				pStmt3.setString(1, "洗濯物が更新されました");
+				pStmt3.setInt(2, clothes.getUser_id());
+				int logCount = pStmt3.executeUpdate();
+				
+				if (logCount == 1) {
+					conn.commit();
+					result = true;
+				} else {
+					conn.rollback();
+				}
+            }	else {
+            	conn.rollback();
             }
  			
 		}catch (SQLException | ClassNotFoundException e) {
