@@ -12,13 +12,7 @@
 
 <body>
 <header>
-<ul>
-<li><a href="/F5/contoller/HomeServlet">ホーム</a></li>
-                <li><a href="${pageContext.request.contextPath}/LaundryRegistServlet">洗濯物登録</a></li>
-                <li><a href="${pageContext.request.contextPath}/LaundryServlet">洗濯物一覧</a></li>
-                <li><a href="${pageContext.request.contextPath}/HelpServlet">ヘルプ</a></li>
-                <li><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
-</ul>
+<jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 <main>
 <h1 class="main-title">せんたくびより</h1>
