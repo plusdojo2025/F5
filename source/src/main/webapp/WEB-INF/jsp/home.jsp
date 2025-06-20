@@ -41,7 +41,7 @@
 <div class="img-row">
 <c:forEach var="mark" items="${Washing_markList}">
   <c:if test="${mark.laundry_category_id == 1}">
-    <img src="${mark.washing_mark_icon}">
+    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}">
   </c:if>
 </c:forEach>
 </div>
