@@ -48,6 +48,24 @@ public class JoinLandry implements Serializable{
 		this.laundry_category_name = laundry_category_name;
 	}
 
+	
+	/* 洗濯一覧画面用コンストラクタ */
+	public JoinLandry(int user_id, int clothes_id, byte[] clothes_img, String remarks, Boolean favorite,
+			String created_at, String updated_at, int category_id, String category_name) {
+		super();
+		this.user_id = user_id;
+		this.clothes_id = clothes_id;
+		this.clothes_img = clothes_img;
+		this.remarks = remarks;
+		this.favorite = favorite;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+		this.category_id = category_id;
+		this.category_name = category_name;
+	}
+
+
+
 	/* ゲッター・セッター */
 	public int getUser_id() {
 		return user_id;

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.dao.ClothesDAO;
-import models.dto.Clothes;
+import models.dto.JoinLandry;
 
 /**
  * Servlet implementation class LaundrySearchServlet
@@ -57,7 +57,7 @@ public class LaundrySearchServlet extends HttpServlet {
 
 		/* クローズDAOのインスタンスを生成 */
 		ClothesDAO dao = new ClothesDAO();
-		List<Clothes> favoriteList = dao.FavoriteSearch(user_id);
+		List<JoinLandry> favoriteList = dao.FavoriteSearch(user_id);
 
 		// リクエストスコープに保存
 		request.setAttribute("clothesList", favoriteList);

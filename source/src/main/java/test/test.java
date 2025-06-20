@@ -2,7 +2,7 @@ package test;
 
 import java.util.List;
 
-import models.dao.akamineTest;
+import models.dao.ClothesDAO;
 import models.dto.JoinLandry;
 
 public class test {
@@ -21,24 +21,17 @@ public class test {
 		    System.out.println("カテゴリーID" + joinLandry.getCategory_id());
 		    System.out.println("カテゴリー名" + joinLandry.getCategory_name());
 
-		    System.out.println("洗濯表示ID" + joinLandry.getWashing_mark_id());
-		    System.out.println("洗濯表示画像" + joinLandry.getWashing_mark_icon());
-		    System.out.println("図柄番号" + joinLandry.getWashing_mark_number());
-
-		    System.out.println("洗濯物カテゴリーID" + joinLandry.getLaundry_category_id());
-		    System.out.println("洗濯物カテゴリー名" + joinLandry.getLaundry_category_name());
-
 			System.out.println();
 		}
 	}
 
 	public static void main(String[] args) {
-		akamineTest dao = new akamineTest();
+		ClothesDAO dao = new ClothesDAO();
 
 		// select()のテスト1
 		System.out.println("---------- select()のテスト1 ----------");
-		List<JoinLandry> LaundryUDList = dao.GetLaundryUDSelect(1, 1);
-        showAllData(LaundryUDList);
+		List<JoinLandry> FavoriteSearchList = dao.FavoriteSearch(1);
+        showAllData(FavoriteSearchList);
 
 	}
 

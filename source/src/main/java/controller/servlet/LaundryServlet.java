@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.dao.ClothesDAO;
-import models.dto.Clothes;
+import models.dto.JoinLandry;
 
 /**
  * Servlet implementation class LaundryServlet
@@ -49,6 +49,7 @@ public class LaundryServlet extends HttpServlet {
 
 		// もしもログインしていなかったらトップサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		/* session.setAttribute("user_id", 1); *///☆
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/servlet/TopServlet");
 			return;
@@ -58,10 +59,12 @@ public class LaundryServlet extends HttpServlet {
 		
 		/* クローズDAOのインスタンスを生成 */
 		ClothesDAO dao = new ClothesDAO();
-		List<Clothes> clothesList = dao.getAllclothes(user_id);
+		List<JoinLandry> clothesList = dao.getAllclothes(user_id);
 
 		// リクエストスコープに保存
 		request.setAttribute("clothesList", clothesList);
+		
+		System.out.println(clothesList);
 
 		// 洗濯表示一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry.jsp");

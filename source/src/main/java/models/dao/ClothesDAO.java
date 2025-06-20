@@ -15,9 +15,9 @@ import models.dto.JoinLandry;
 public class ClothesDAO {
 	
 	/* ユーザーが所持している全ての洗濯物を取得してリストにして返す */
-	public List<Clothes> getAllclothes(int user_id) {
+	public List<JoinLandry> getAllclothes(int user_id) {
 		Connection conn = null;
-		List<Clothes> clothesList = new ArrayList<Clothes>();
+		List<JoinLandry> clothesList = new ArrayList<JoinLandry>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -29,7 +29,20 @@ public class ClothesDAO {
 					"root", "password");
 
 			// SQL文をセットする
-			String sql = "SELECT clothes_id, clothes_img, category_id, remarks, user_id, favorite, created_at, updated_at FROM clothes WHERE user_id = ?";
+			String sql = "SELECT"
+					+ "    c.clothes_id,"
+					+ "    c.clothes_img,"
+					+ "    c.category_id,"
+					+ "    cm.category_name,"
+					+ "    c.remarks,"
+					+ "    c.user_id,"
+					+ "    c.favorite,"
+					+ "    c.created_at,"
+					+ "    c.updated_at"
+					+ " FROM clothes AS c"
+					+ " JOIN category_mst AS cm"
+					+ " ON c.category_id = cm.category_id"
+					+ " WHERE c.user_id = ?";
 
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setInt(1, user_id);
@@ -40,17 +53,18 @@ public class ClothesDAO {
 
 			// １行づつ取り出し、結果をclothesListにコピーする
 			while (rs.next()) {
-				Clothes clo = new Clothes(
+				JoinLandry jl = new JoinLandry(
+						rs.getInt("user_id"),
 						rs.getInt("clothes_id"),
 						rs.getBytes("clothes_img"),
-						rs.getInt("category_id"),
 						rs.getString("remarks"),
-						rs.getInt("user_id"),
 						rs.getBoolean("favorite"),
 						rs.getString("created_at"),
-						rs.getString("updated_at")
+						rs.getString("updated_at"),
+						rs.getInt("category_id"),
+						rs.getString("category_name")
 					);
-				clothesList.add(clo);
+				clothesList.add(jl);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,9 +89,9 @@ public class ClothesDAO {
 	}
 	
 	/* 洗濯物の絞りこみ検索 */
-	public List<Clothes> FavoriteSearch(int user_id) {
+	public List<JoinLandry> FavoriteSearch(int user_id) {
 		Connection conn = null;
-		List<Clothes> favoriteList = new ArrayList<Clothes>();
+		List<JoinLandry> favoriteList = new ArrayList<JoinLandry>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -89,9 +103,20 @@ public class ClothesDAO {
 					"root", "password");
 
 			// SQL文をセットする
-			String sql = "SELECT clothes_id, clothes_img, category_id, remarks, user_id, favorite, created_at, updated_at "
-			           + "FROM clothes "
-			           + "WHERE user_id = ? AND favorite = true";
+			String sql = "SELECT"
+					+ "    c.clothes_id,"
+					+ "    c.clothes_img,"
+					+ "    c.category_id,"
+					+ "    cm.category_name,"
+					+ "    c.remarks,"
+					+ "    c.user_id,"
+					+ "    c.favorite,"
+					+ "    c.created_at,"
+					+ "    c.updated_at"
+					+ " FROM clothes AS c"
+					+ " JOIN category_mst AS cm"
+					+ " ON c.category_id = cm.category_id"
+					+ " WHERE c.user_id = ? AND favorite = true";
 			
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setInt(1, user_id);
@@ -101,17 +126,18 @@ public class ClothesDAO {
 
 			// １行づつ取り出し、結果をclothesListにコピーする
 			while (rs.next()) {
-				Clothes ser = new Clothes(
-					rs.getInt("clothes_id"),
-						rs.getBytes("clothes_img"),
-						rs.getInt("category_id"),
-						rs.getString("remarks"),
+				JoinLandry jl = new JoinLandry(
 						rs.getInt("user_id"),
+						rs.getInt("clothes_id"),
+						rs.getBytes("clothes_img"),
+						rs.getString("remarks"),
 						rs.getBoolean("favorite"),
 						rs.getString("created_at"),
-						rs.getString("updated_at")
+						rs.getString("updated_at"),
+						rs.getInt("category_id"),
+						rs.getString("category_name")
 					);
-				favoriteList.add(ser);
+				favoriteList.add(jl);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

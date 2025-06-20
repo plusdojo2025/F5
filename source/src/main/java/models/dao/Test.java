@@ -10,7 +10,7 @@ import java.util.List;
 
 import models.dto.JoinLandry;
 
-public class akamineTest {
+public class Test {
 
 	/* ユーザーIDと洗濯物IDを指定してユーザーが所持している洗濯物１つを編集と削除 */
 	public List<JoinLandry> GetLaundryUDSelect(int user_id, int clothes_id) {
