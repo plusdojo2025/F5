@@ -1,6 +1,8 @@
 package controller.servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,8 +55,10 @@ public class UserRegistServlet extends HttpServlet {
 		
 		// 登録処理を行う
 		UsersDAO dao = new UsersDAO();
-		if (dao.insert(new Users(0, password, nickname, email, null, "", ""))) {
-			response.sendRedirect("/WEB-INF/jsp/login.jsp");; // 登録成功後、ログインページへリダイレクト
+		//現在の日時を取得
+		String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		if (dao.insert(new Users(0, password, nickname, email, null, now, now))) {
+			response.sendRedirect(request.getContextPath() +"/LoginServlet"); // 登録成功後、ログインページへリダイレクト
 		} else { // 登録失敗
 			request.setAttribute("error", "登録に失敗しました");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_regist.jsp");

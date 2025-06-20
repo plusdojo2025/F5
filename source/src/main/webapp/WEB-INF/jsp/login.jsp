@@ -40,7 +40,7 @@
   </section>
 </div>
 <div class="user_regist_button">
-    <a href="user_regist.jsp">新規登録はこちら</a>
+    <a href="${pageContext.request.contextPath}/UserRegistServlet">新規登録はこちら</a>
 </div>
 </main>
 <!-- メインここまで -->

@@ -19,7 +19,7 @@
     <nav class="nav">
         <ul>
             <li><a href="${pageContext.request.contextPath}/LoginServlet">ログイン</a></li> 
-            <li><a href="user_regist.jsp">新規登録</a></li>
+            <li><a href="${pageContext.request.contextPath}/UserRegistServlet">新規登録</a></li>
         </ul>
     </nav>
 </header>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="regist2_button">
-        <a href="user_regist.jsp">まずはこちらから新規登録へ！</a>
+        <a href="${pageContext.request.contextPath}/UserRegistServlet">まずはこちらから新規登録へ！</a>
     </div>
 </main>
 <!-- メインここまで -->
