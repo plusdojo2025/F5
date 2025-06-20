@@ -8,7 +8,6 @@
 <title>せんたくびより | ホーム画面</title>
 <link rel="stylesheet" href="/F5/css/home.css">
 </head>
-</head>
 
 <body>
 <header>
@@ -23,13 +22,11 @@
 <main>
 <h1 class="main-title">せんたくびより</h1>
 <h2 class="subtitle">～wash of life～</h2>
-<!-- logtest -->
-<p>ログの情報<p>
+<p>ログの情報</p>
 <c:forEach var="log" items="${logList}">
 	<p>${log.log_info}</p>
 </c:forEach>
 <p>画像の表示</p>
-
 <div class="catetitle">
 	<c:forEach var="luncate" items="${laundry_categoryList}">
 		<c:if test="${luncate.laundry_category_name == '家庭洗濯'}">	
@@ -57,7 +54,7 @@
 <div class="img-row">
 <c:forEach var="mark" items="${Washing_markList}">
   <c:if test="${mark.laundry_category_id == 2}">
-    <img src="${mark.washing_mark_icon}">
+    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}">
   </c:if>
 </c:forEach>
 </div>
@@ -72,7 +69,7 @@
 <div class="img-row">
 <c:forEach var="mark" items="${Washing_markList}">
   <c:if test="${mark.laundry_category_id == 3}">
-    <img src="${mark.washing_mark_icon}">
+    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}">
   </c:if>
 </c:forEach>
 </div>
@@ -88,7 +85,7 @@
 <div class="img-row">
 <c:forEach var="mark" items="${Washing_markList}">
   <c:if test="${mark.laundry_category_id == 4}">
-    <img src="${mark.washing_mark_icon}">
+    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}">
   </c:if>
 </c:forEach>
 </div>
@@ -104,7 +101,7 @@
 <div class="img-row">
 <c:forEach var="mark" items="${Washing_markList}">
   <c:if test="${mark.laundry_category_id == 5}">
-    <img src="${mark.washing_mark_icon}">
+    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}">
   </c:if>
 </c:forEach>
 </div>
@@ -120,9 +117,12 @@
 <div class="img-row">
 <c:forEach var="mark" items="${Washing_markList}">
   <c:if test="${mark.laundry_category_id == 6}">
-    <img src="${mark.washing_mark_icon}">
+    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}">
   </c:if>
 </c:forEach>
+</div>
+
+<div class="modal">
 </div>
 </main>
 </body>

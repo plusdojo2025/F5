@@ -1,5 +1,7 @@
 @charset "UTF-8";
-#lud_cate{
+
+
+.catetitle{
 	background-color: #888;
     color: white;
     border-radius: 12px;
@@ -8,6 +10,13 @@
     margin:0 300px 0 300px;
 }
 .img-row{
-	display:flex;
-	gap:20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; 
 }
+
+.img-row img{
+	width: 70px;
+    height: 70px;
+    display: block;
+	}

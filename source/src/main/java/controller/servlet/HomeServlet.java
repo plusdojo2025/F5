@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.dao.Laundry_categoryDAO;
 import models.dao.LogDAO;
@@ -25,7 +26,6 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
@@ -33,7 +33,6 @@ public class HomeServlet extends HttpServlet {
 					return;
 				}
 
-		*/
 		//洗濯カテゴリー（漂白など）をデータベースから取得
 		Laundry_categoryDAO lcdao = new Laundry_categoryDAO();
 		List<Laundry_category> laundry_categoryList = lcdao.getLaundryCategory();
@@ -51,13 +50,8 @@ public class HomeServlet extends HttpServlet {
 		//ログ情報をデータベースから取得する。
 		LogDAO ldao = new LogDAO();
 		
-		//user=idをもらう。あれ変換するやつ
-		/*
-		int user_id = Integer.parseInt(request.getParameter("user_id"));
-		*/
-		
-		//testあとで消せ
-		int user_id = 1;
+		//セッションに保存されているuser=idをもらう。
+		Integer user_id = (Integer) session.getAttribute("user_id");
 		
 		List<Log> logList = ldao.getLog(user_id);
 		//洗濯マークををリクエストスコープに格納する
