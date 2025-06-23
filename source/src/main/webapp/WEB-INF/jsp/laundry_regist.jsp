@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/laundry_cud.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/common.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/laundry_cud.css">
     <title>せんたくびより|登録</title>
 </head>
 <body>
@@ -16,16 +17,23 @@
 	<main>
     	<form action="${pageContext.request.contextPath}/LaundryRegistServlet" method="POST" enctype="multipart/form-data">
     		<div class="left">
-    			<!-- 画像プレビュー -->
-    			<img src="${pageContext.request.contextPath}/img/clothes.png" alt="デフォルト画像" width="150"><br>
-    			
+    			<div class="preview-upload">
+	    			<!-- 画像プレビュー -->
+	    			<img src="${pageContext.request.contextPath}/img/clothes.png" alt="デフォルト画像" width="150">
+	    			<!-- お気に入りチェックボックス -->
+	    			
+			        <label for="favorite" class="favorite-icon">
+				        <input type="checkbox" id="favorite" name="favorite" value="true">
+				        <span class="star"></span>
+			        </label>
+			        
+		    	</div>
     			<!-- 洗濯物の画像アップロード -->
-		        <label for="clothes_img">写真のアップロード</label>
+		        <label for="clothes_img" class="clothes_img">写真のアップロード</label>
 		        <input type="file" id="clothes_img" name="clothes_img" class="file-input"><br>
 		        
-		        <!-- お気に入りチェックボックス -->
-		        <label for="favorite">お気に入り:</label>
-		        <input type="checkbox" id="favorite" name="favorite" value="true"><br>
+		        
+		        
 		        
 		        <!-- 洗濯物のカテゴリ選択 -->
 		        <select id="category_id" name="category_id" required>
@@ -40,13 +48,14 @@
 		        </select><br>
 
 		        <!-- メモ欄 -->
-		        <input type="text" id="remarks" name="remarks" placeholder="メモ入力欄"><br>
+		        <textarea id="remarks" name="remarks" placeholder="メモ入力欄"></textarea><br>
 		
 		        
 			</div>
 			
 			<div class="right">
 		        <!-- 洗濯表示カテゴリー名の表示 -->
+		        <div class="right-check">
 		        <c:forEach var="category" items="${laundry_categoryList}">
 	        		<p class="category_name">${category.laundry_category_name}</p>
 	        		<c:forEach var="mark" items="${Washing_markList}">
@@ -58,7 +67,8 @@
 	        			</c:if>
 	        		</c:forEach>
 		        </c:forEach><br>
-	        	<input type="submit" value="登録">
+		        </div>
+		        <input type="submit" value="登録">
 	        </div>
     	</form>
     </main>

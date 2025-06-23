@@ -37,7 +37,7 @@ public class LaundryRegistServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/F5/LoginServlet");
+			response.sendRedirect(request.getContextPath() + "/TopServlet");
 			return;
 		}
 		//洗濯カテゴリー（漂白など）をデータベースから取得
@@ -67,7 +67,7 @@ public class LaundryRegistServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/F5/LoginServlet");
+			response.sendRedirect(request.getContextPath() + "/TopServlet");
 			return;
 		}
 		

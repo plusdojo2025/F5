@@ -40,7 +40,7 @@ public class LaundryDetailUDServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/F5/LoginServlet");
+			response.sendRedirect(request.getContextPath() + "/TopServlet");
 			return;
 		}
 		//洗濯カテゴリー（漂白など）をデータベースから取得
@@ -68,11 +68,11 @@ public class LaundryDetailUDServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("email") == null) {
-//			response.sendRedirect("/webapp/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("email") == null) {
+			response.sendRedirect(request.getContextPath() + "/TopServlet");
+			return;
+		}
 		
 		String action = request.getParameter("action");
 		ClothesDAO dao = new ClothesDAO();

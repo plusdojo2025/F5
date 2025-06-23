@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-main {
-	background-color: #C9E4F4;
-}
+
 /* 左右に配置 */
 form {
 	display: flex;
@@ -12,10 +10,83 @@ form {
 .left {
 	background-color: #FFF;
 	border-radius: 20px;
+	padding: 50px 200px;
+	margin: 20px 0;
 }
-.right {
+/* プルダウンのレイアウト */
+.left select {
+	display: block;
+	border-radius: 15px;
+	text-align: center;
+	text-align-last: center;
+	padding: 5px;
+	margin: 0 auto;
+	width: 100%;
+	margin-top: 30px;
+}
+/* 画像プレビューのレイアウト*/
+.preview-upload {
+    display: flex;
+    flex-direction: row; /* 横並びに変更 */
+    align-items: center; /* 縦の中央揃え */
+    gap: 20px; /* 画像とチェックボックスの間にスペースを追加 */
+    padding: 50px 0;
+    position: relative;
+    justify-content: center;
+}
+/* チェックボックスを非表示にする */
+.favorite-icon input[type="checkbox"] {
+    display: none;
+}
+
+/* 星のスタイル */
+.star {
+	margin-top: -100px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-color: #616161; 
+	clip-path: polygon(
+	  50% 0%, 61% 35%, 98% 35%,
+	  68% 57%, 79% 91%, 50% 70%,
+	  21% 91%, 32% 57%, 2% 35%, 39% 35%
+	);
+	border: 2px solid black; 
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
+
+/* チェックされたら濃い黄色に塗りつぶし */
+.favorite-icon input[type="checkbox"]:checked + .star {
+  background-color: #FFD600; /* ✅ 濃い黄色（チェック時） */
+}
+.favorite-icon input[type="checkbox"] {
+	display: none;
+}
+.clothes_img {
+	margin-top: -10px;
+	display: flex;
+	justify-content: center;
+	border: 1px solid black;
+	border-radius: 15px;
+	width: 250px;
+	text-align: center;
+}
+label.clothes_img {
+	width: 100%;  /* labelの幅を100%にして中央寄せを効かせる */
+	text-align: center;  /* テキストを中央寄せ */
+}
+#remarks {
+	width: 300px;
+	height: 100px;
+	margin-top: 50px;
+}
+/* チェックボックスの背景 */
+.right-check {
 	background-color: #FFF;
 	border-radius: 20px;
+	padding: 30px;
+	margin: 20px 0;
 }
 
 /* ファイル選択を非表示 */
@@ -30,13 +101,7 @@ form {
 	width: fit-content;
 	padding: 0 20px;
 }
-/* プルダウンのレイアウト */
-select {
-	border-radius: 15px;
-	padding: 0 50px;
-	padding-left: 30%;
-	padding-right: 30%;
-}
+
 /* チェックボックスを消す */
 .icon-label input[type="checkbox"] {
 	display: none;
@@ -45,4 +110,18 @@ select {
 .icon-label input[type="checkbox"]:checked + img {
 	background-color: #c8c2be;
 	border-radius: 6px;
+}
+
+/* 登録ボタン */
+input[type="submit"] {
+    background-color: #6CA9F9;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    padding: 10px 50px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 30px;
 }
