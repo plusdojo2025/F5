@@ -46,7 +46,9 @@
 <!-- メインここまで -->
 
 <!-- フッターここから -->
-
+<footer class="footer">
+    <p class="copyright">&copy; TACOS</p>
+</footer>
 <!-- フッターここまで -->
 </body>
 </html>
