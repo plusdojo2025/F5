@@ -24,7 +24,7 @@ public class ClothesDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -579,7 +579,7 @@ public class ClothesDAO {
 					"root", "password");
 
 	     // numberで1件だけ検索するSQL文
-	        String sql = "SELECT clothes_id, clothes_img, category_id, remarks, users_id,favorite,created_at,updated_at "
+	        String sql = "SELECT clothes_id, clothes_img, category_id, remarks, user_id,favorite,created_at,updated_at "
 	                + "FROM clothes "
 	                + "WHERE clothes_id = ?";
 
@@ -595,7 +595,7 @@ public class ClothesDAO {
 	                rs.getBytes("clothes_img"),
 	                rs.getInt("category_id"),
 	                rs.getString("remarks"),
-	                rs.getInt("users_id"),
+	                rs.getInt("user_id"),
 	                rs.getBoolean("favorite"),
 	                rs.getString("created_at"),	
 	                rs.getString("updated_at")

@@ -18,7 +18,7 @@ public class Washing_markDAO {
 			//JDBCドライバに接続
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			//データベースに接続をする
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			//SQL文の作成 洗濯マークの情報を取得
