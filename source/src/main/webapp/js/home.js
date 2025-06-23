@@ -8,7 +8,7 @@ const okText = document.getElementById("ok-text");
     img.addEventListener('click', ()=>{
       const message = img.getAttribute("data-info") || "この画像に説明はありません。";
       modalText.textContent = message;
-       modalImage.src = img.src; // クリックされた画像をコピー
+      modalImage.src = img.src; // クリックされた画像をコピー
       textModal.style.display = "block";
     });
   });

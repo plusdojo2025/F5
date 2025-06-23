@@ -6,28 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>せんたくびより | ホーム画面</title>
-<link rel="stylesheet" href="/F5/css/home.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 
 <body>
-<header>
+<header>  
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
-<main>
+<main> 
 <div class="divide">
 	<section class="log">
 		<div class="catetitle">
-			<p>お知らせ</p>
+			<h2 id="news">お知らせ</h2>
 		</div>
 		<c:forEach var="log" items="${logList}">
 			<p>${log.log_info}</p>
 		</c:forEach>
 	</section>
+	
 	<section class="washmark">
+	<div class="marktitle">
+	</div>
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<div class="catetitle">
 					<c:if test="${luncate.laundry_category_name == '家庭洗濯'}">	
-						<p>${luncate.laundry_category_name}</p>
+						<h2>${luncate.laundry_category_name}</h2>
 					</c:if>
 				</div>
 			</c:forEach>
@@ -43,7 +47,7 @@
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == '漂白'}">	
-					<p>${luncate.laundry_category_name}</p>
+					<h2>${luncate.laundry_category_name}</h2>
 				</c:if>
 			</c:forEach>
 		</div>
@@ -60,7 +64,7 @@
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == 'タンブル乾燥'}">	
-					<p>${luncate.laundry_category_name}</p>
+					<h2>${luncate.laundry_category_name}</h2>
 				</c:if>
 			</c:forEach>
 		</div>
@@ -76,7 +80,7 @@
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == '自然乾燥'}">	
-					<p>${luncate.laundry_category_name}</p>
+					<h2>${luncate.laundry_category_name}</h2>
 				</c:if>
 			</c:forEach>
 		</div>
@@ -93,7 +97,7 @@
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == 'アイロン'}">	
-					<p>${luncate.laundry_category_name}</p>
+					<h2>${luncate.laundry_category_name}</h2>
 				</c:if>
 			</c:forEach>
 		</div>
@@ -110,7 +114,7 @@
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == 'クリーニング'}">	
-					<p>${luncate.laundry_category_name}</p>
+					<h2>${luncate.laundry_category_name}</h2>
 				</c:if>
 			</c:forEach>
 		</div>
@@ -139,6 +143,7 @@
 	</div>
 </div>
 </main>
+
 <script src="${pageContext.request.contextPath}/js/home.js"></script>
 </body>
 </html>
