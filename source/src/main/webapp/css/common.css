@@ -10,6 +10,16 @@ body {
     margin: 0;
 }
 
+/* すべてのページに適用-ヘッダー */
+footer {
+    text-align: right;
+    padding: 30px;
+    background-color: #ffffff;
+    font-size: 25px;
+    color: #3b0606;
+    margin-top: 140px;
+}
+
 /* すべてのページに適用-フッター */
 footer {
     text-align: right;

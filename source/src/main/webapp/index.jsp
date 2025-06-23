@@ -45,6 +45,8 @@
 </main>
 <!-- メインここまで -->
 
-<!-- フッターは共通 -->
+<!-- フッターここから -->
+<jsp:include page="/WEB-INF/include/footer.jsp" />
+<!-- フッターここまで -->
 </body>
 </html>
