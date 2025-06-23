@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class HelpServlet
@@ -17,15 +18,13 @@ public class HelpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
 				if (session.getAttribute("email") == null) {
-					response.sendRedirect("/F5/LoginServlet");
+					response.sendRedirect(request.getContextPath() + "/LoginServlet");
 					return;
 				}
 
-		*/
 		// リクエストディスパッチャオブジェクトを取得する
 				RequestDispatcher dispatcher = 
 						request.getRequestDispatcher("/WEB-INF/jsp/help.jsp");

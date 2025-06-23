@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
-					response.sendRedirect("/F5/LoginServlet");
+					response.sendRedirect(request.getContextPath() + "/LoginServlet");
 					return;
 				}
 
@@ -46,10 +46,8 @@ public class HomeServlet extends HttpServlet {
 		//洗濯マークををリクエストスコープに格納する
 			request.setAttribute("Washing_markList", Washing_markList);
 		
-		
 		//ログ情報をデータベースから取得する。
 		LogDAO ldao = new LogDAO();
-		
 		//セッションに保存されているuser=idをもらう。
 		Integer user_id = (Integer) session.getAttribute("user_id");
 		
