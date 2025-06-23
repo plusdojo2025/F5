@@ -54,13 +54,18 @@ public class LaundrySearchServlet extends HttpServlet {
 		
 		/* セッションスコープ保持しているユーザーIDをint型へ変換 */
 		int user_id = (int) session.getAttribute("user_id");
+		
 
 		/* クローズDAOのインスタンスを生成 */
 		ClothesDAO dao = new ClothesDAO();
+		
 		List<JoinLandry> favoriteList = dao.FavoriteSearch(user_id);
+		
 
 		// リクエストスコープに保存
 		request.setAttribute("clothesList", favoriteList);
+		request.setAttribute("filter", "favorite");
+		
 
 		// 洗濯表示一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry.jsp");

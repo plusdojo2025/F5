@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form method="POST" action="/F5/LaundryServlet" id="clothesList">
+<form method="GET" action="/F5/LaundryServlet" id="clothesList">
 <input type="submit"value="洗濯物一覧">
 </form>
 </body>

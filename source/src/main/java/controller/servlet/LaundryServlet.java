@@ -29,10 +29,22 @@ public class LaundryServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらトップサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		session.setAttribute("user_id", 1);
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/servlet/TopServlet");
 			return;
 		}
+		
+		/* セッションスコープ保持しているユーザーIDをint型へ変換 */
+		int user_id = (int) session.getAttribute("user_id");
+		
+		/* クローズDAOのインスタンスを生成 */
+		ClothesDAO dao = new ClothesDAO();
+		List<JoinLandry> clothesList = dao.getAllclothes(user_id);
+		
+		// リクエストスコープに保存
+		request.setAttribute("clothesList", clothesList);
+		request.setAttribute("filter", "all");
 
 		// 洗濯物一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry.jsp");
@@ -63,8 +75,7 @@ public class LaundryServlet extends HttpServlet {
 
 		// リクエストスコープに保存
 		request.setAttribute("clothesList", clothesList);
-		
-		System.out.println(clothesList);
+		request.setAttribute("filter", "all");
 
 		// 洗濯表示一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry.jsp");

@@ -42,7 +42,7 @@ public class ClothesDAO {
 					+ " FROM clothes AS c"
 					+ " JOIN category_mst AS cm"
 					+ " ON c.category_id = cm.category_id"
-					+ " WHERE c.user_id = ?";
+					+ " WHERE c.user_id = ? ORDER BY c.category_id ";
 
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setInt(1, user_id);
