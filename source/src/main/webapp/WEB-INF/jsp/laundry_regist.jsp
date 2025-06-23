@@ -6,48 +6,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>洗濯物登録</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/laundry_cud.css">
+    <title>せんたくびより|登録</title>
 </head>
 <body>
-    <h2>洗濯物の登録</h2>
-    <form action="${pageContext.request.contextPath}/LaundryRegistServlet" method="POST" enctype="multipart/form-data">
-        <!-- 洗濯物のカテゴリ選択 -->
-        <label for="category_id">カテゴリ:</label>
-        <select id="category_id" name="category_id" required>
-            <option value="1">シャツ</option>
-            <option value="2">ズボン</option>
-            <option value="3">コート</option>
-            <!-- 他のカテゴリを追加 -->
-        </select><br>
+<header>
+<jsp:include page="/WEB-INF/include/header.jsp" />
+</header>
+	<main>
+    	<form action="${pageContext.request.contextPath}/LaundryRegistServlet" method="POST" enctype="multipart/form-data">
+    		<div class="left">
+    			<!-- 画像プレビュー -->
+    			<img src="${pageContext.request.contextPath}/img/clothes.png" alt="デフォルト画像" width="150"><br>
+    			
+    			<!-- 洗濯物の画像アップロード -->
+		        <label for="clothes_img">写真のアップロード</label>
+		        <input type="file" id="clothes_img" name="clothes_img" class="file-input"><br>
+		        
+		        <!-- お気に入りチェックボックス -->
+		        <label for="favorite">お気に入り:</label>
+		        <input type="checkbox" id="favorite" name="favorite" value="true"><br>
+		        
+		        <!-- 洗濯物のカテゴリ選択 -->
+		        <select id="category_id" name="category_id" required>
+		        	<option value="" disabled selected>衣類カテゴリー選択</option>
+		            <option value="1">トップス</option>
+		            <option value="2">ボトムス</option>
+		            <option value="3">アウター</option>
+		            <option value="4">ワンピース</option>
+		            <option value="5">スーツ</option>
+		            <option value="6">その他</option>
+		            <option value="7">ファブリック</option>
+		        </select><br>
 
-        <!-- 洗濯物の画像アップロード -->
-        <label for="clothes_img">画像:</label>
-        <input type="file" id="clothes_img" name="clothes_img"><br>
-
-        <!-- メモ欄 -->
-        <label for="remarks">メモ:</label>
-        <textarea id="remarks" name="remarks" rows="4" cols="50" placeholder="メモを記入"></textarea><br>
-
-        <!-- お気に入りチェックボックス -->
-        <label for="favorite">お気に入り:</label>
-        <input type="checkbox" id="favorite" name="favorite" value="true"><br>
-
-        <!-- ユーザーID（テスト用のダミー値） -->
-        <input type="hidden" name="user_id" value="1">
-
-        <!-- 洗濯表示マーク（複数選択可能） -->
-        <label for="washing_mark">洗濯表示:</label><br>
-        <input type="checkbox" name="washing_mark" value="1"> 手洗い<br>
-        <input type="checkbox" name="washing_mark" value="2"> ドライクリーニング<br>
-        <input type="checkbox" name="washing_mark" value="3"> 高温注意<br>
-
-        <br>
-        <input type="submit" value="登録">
-    </form>
-
-    <hr>
-
-    <h3>登録した洗濯物</h3>
-    <p>登録した洗濯物が表示されます（テスト用）。</p>
+		        <!-- メモ欄 -->
+		        <input type="text" id="remarks" name="remarks" placeholder="メモ入力欄"><br>
+		
+		        
+			</div>
+			
+			<div class="right">
+		        <!-- 洗濯表示カテゴリー名の表示 -->
+		        <c:forEach var="category" items="${laundry_categoryList}">
+	        		<p class="category_name">${category.laundry_category_name}</p>
+	        		<c:forEach var="mark" items="${Washing_markList}">
+	        			<c:if test="${mark.laundry_category_name == category.laundry_category_name}">
+	        				<label for="${mark.washing_id}" class="icon-label">
+	        				<input type="checkbox" name="washing_mark" id="${mark.washing_id}" value="${mark.washing_id}">
+	        				<img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}" width="35" height="auto">
+	        				</label>
+	        			</c:if>
+	        		</c:forEach>
+		        </c:forEach><br>
+	        	<input type="submit" value="登録">
+	        </div>
+    	</form>
+    </main>
+<footer>
+<jsp:include page="/WEB-INF/include/footer.jsp" />
+</footer>
 </body>
 </html>

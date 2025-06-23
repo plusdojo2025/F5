@@ -12,10 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import models.dao.ClothesDAO;
+import models.dao.Laundry_categoryDAO;
+import models.dao.Washing_markDAO;
 import models.dto.Clothes;
+import models.dto.Laundry_category;
+import models.dto.Washing_mark;
 
 @MultipartConfig
 @WebServlet("/LaundryRegistServlet")
@@ -30,11 +35,23 @@ public class LaundryRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("email") == null) {
-//			response.sendRedirect("/webapp/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/F5/LoginServlet");
+			return;
+		}
+		//洗濯カテゴリー（漂白など）をデータベースから取得
+		Laundry_categoryDAO lcdao = new Laundry_categoryDAO();
+		List<Laundry_category> laundry_categoryList = lcdao.getLaundryCategory();
+		request.setAttribute("laundry_categoryList", laundry_categoryList);
+		
+		//洗濯表示をデータベースから取得する。
+		Washing_markDAO wdao = new Washing_markDAO();
+		//Washing_markDAOのgetWashing_mark()を呼び出す。
+		List<Washing_mark> Washing_markList = wdao.getWashing_mark();
+		
+		//洗濯マークををリクエストスコープに格納する
+		request.setAttribute("Washing_markList", Washing_markList);
 		
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry_regist.jsp");
@@ -48,11 +65,11 @@ public class LaundryRegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("email") == null) {
-//			response.sendRedirect("/webapp/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/F5/LoginServlet");
+			return;
+		}
 		
 		Part image_data = request.getPart("clothes_img");
 		byte[] clothes_img = null;
@@ -71,7 +88,7 @@ public class LaundryRegistServlet extends HttpServlet {
 		int category_id = Integer.parseInt(request.getParameter("category_id"));
 		String remarks = request.getParameter("remarks");
 		boolean favorite = Boolean.parseBoolean(request.getParameter("favorite"));
-		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		int user_id = (int) session.getAttribute("user_id");
 		
 		// 洗濯表示ID取得してwashingMarkIdsリストに格納
 		String[] markid = request.getParameterValues("washing_mark");
@@ -88,7 +105,7 @@ public class LaundryRegistServlet extends HttpServlet {
 		boolean success = dao.insert(new Clothes(0, clothes_img, category_id, remarks, user_id, favorite, null, null), washingMarkIds);
 		if (success) {
 			// 一覧にリダイレクト
-			response.sendRedirect("/F5/LaundryServlet");
+			response.sendRedirect(request.getContextPath() + "/LaundryServlet");
 		}	else  {
 			request.setAttribute("error", "登録できませんでした");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry_regist.jsp");

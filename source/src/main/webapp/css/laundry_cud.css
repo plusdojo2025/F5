@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+main {
+	background-color: #C9E4F4;
+}
+/* 左右に配置 */
+form {
+	display: flex;
+	justify-content: center;
+	gap: 100px;
+}
+.left {
+	background-color: #FFF;
+	border-radius: 20px;
+}
+.right {
+	background-color: #FFF;
+	border-radius: 20px;
+}
+
+/* ファイル選択を非表示 */
+.file-input {
+	display: none;
+}
+/* カテゴリー名のスタイル */
+.category_name {
+	background-color: #807B84;
+	border-radius: 10px;
+	color: #FFF;
+	width: fit-content;
+	padding: 0 20px;
+}
+/* プルダウンのレイアウト */
+select {
+	border-radius: 15px;
+	padding: 0 50px;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+/* チェックボックスを消す */
+.icon-label input[type="checkbox"] {
+	display: none;
+}
+/* 洗濯表示選択時の視覚的スタイル */
+.icon-label input[type="checkbox"]:checked + img {
+	background-color: #c8c2be;
+	border-radius: 6px;
+}
