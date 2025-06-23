@@ -42,6 +42,7 @@ public class LaundryServlet extends HttpServlet {
 		ClothesDAO dao = new ClothesDAO();
 		List<JoinLandry> clothesList = dao.getAllclothes(user_id);
 		
+		
 		// リクエストスコープに保存
 		request.setAttribute("clothesList", clothesList);
 		request.setAttribute("filter", "all");

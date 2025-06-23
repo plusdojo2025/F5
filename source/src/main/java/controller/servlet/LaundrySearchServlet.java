@@ -63,7 +63,7 @@ public class LaundrySearchServlet extends HttpServlet {
 		
 
 		// リクエストスコープに保存
-		request.setAttribute("clothesList", favoriteList);
+		request.setAttribute("favoriteList", favoriteList);
 		request.setAttribute("filter", "favorite");
 		
 

@@ -47,7 +47,6 @@ public class ClothesDAO {
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setInt(1, user_id);
 
-
 			// SQL文を実行し、結果をrsへ格納
 			ResultSet rs = pStmt.executeQuery();
 
