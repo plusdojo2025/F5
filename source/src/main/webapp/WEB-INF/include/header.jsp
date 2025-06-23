@@ -1,19 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<!-- <jsp:include page="/WEB-INF/include/header.jsp" /> これをヘッダーのところに挿入-->
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <ul>
+<header class="header">
+<div class="title">
+	<h1 class="main-title">せんたくびより</h1>
+	<h2 class="subtitle">~Wash of Life~</h2>
+</div>
+<nav class="nav-menu">
+	<ul>
         <li><a href="/F5/contoller/HomeServlet">ホーム</a></li>
-        <li><a href="${pageContext.request.contextPath}/LaundryRegistServlet">洗濯物登録</a></li>
-        <li><a href="${pageContext.request.contextPath}/LaundryServlet">洗濯物一覧</a></li>
+        <li class="arrow">▶</li>
+        <li class="regist"><a href="${pageContext.request.contextPath}/LaundryRegistServlet">洗濯物登録</a></li>
+        <li class="arrow">▶</li>
+        <li class="list"><a href="${pageContext.request.contextPath}/LaundryServlet">洗濯物一覧</a></li>
         <li><a href="${pageContext.request.contextPath}/HelpServlet">ヘルプ</a></li>
-        <li><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
-    </ul>
+        <li class="logout"><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
+	</ul>
+</nav>
+</header>
 </body>
 </html>

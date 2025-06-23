@@ -11,13 +11,69 @@ body {
 }
 
 /* すべてのページに適用-ヘッダー */
-footer {
-    text-align: right;
-    padding: 30px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;
-    font-size: 25px;
-    color: #3b0606;
-    margin-top: 140px;
+    padding: 25px;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+.main-title {
+    font-size: 45px;
+    color: #807B84;
+    margin: 0;
+}
+.subtitle {
+    font-size: 42px;
+    color: #807B84;
+    margin: 0;
+    margin-left: 10px;
+}
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 35px; 
+}
+.nav-menu li.arrow {
+  color: #000000;
+  font-size: 20px; 
+}
+.nav-menu li a { /* ホーム、マイページ、へルプボタン */
+    padding: 16px 32px;
+    background-color: #C9E4F4;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 28px;
+}
+.nav-menu li a:hover { /* ホバー時 */
+    background-color: #BFDDF1;
+}
+.nav-menu li.regist a { /* 洗濯物登録ボタン */
+    background-color: #6CA9F9;
+    color: #000;
+}
+.nav-menu li.regist a:hover { /* ホバー時 */
+    background-color: #559AF7;
+}
+.nav-menu li.list a { /* 洗濯物一覧 */
+    background-color: #2684FF;
+    color: #000;
+}
+.nav-menu li.list a:hover { /* ホバー時 */
+    background-color: #1F75E8;
+}
+.nav-menu li.logout a { /* ログアウトボタン */
+    background-color: #F9C0EF;
+    color: #000;
+}
+.nav-menu li.logout a:hover { /* ホバー時 */
+    background-color: #f7b0d0;
 }
 
 /* すべてのページに適用-フッター */
