@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>せんたくびより</title>
+    <title>ログイン | せんたくびより</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -26,16 +26,16 @@
         <form id="form" action="/F5/LoginServlet" method="POST">
             <div class="login_form_btm">
                 <div class="form_row">
-                    <label for="id">メールアドレス</label>
-                    <input type="email" name="email" id="id" placeholder="メールアドレスを入力してください">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" name="email" id="email">
                 </div>
                 <div class="form_row">
-                    <label for="pw">パスワード</label>
-                    <input type="password" name="password" id="pw" placeholder="パスワードを入力してください">
+                    <label for="password">パスワード</label>
+                    <input type="password" name="password" id="password">
                 </div>
             </div>
-            <button type="submit">ログイン</button>
             <p id="output" style="color: #4A3E37;"></p> <!-- エラーメッセージ表示用 -->
+            <button type="submit">ログイン</button>
         </form>
   </section>
 </div>
@@ -45,7 +45,9 @@
 </main>
 <!-- メインここまで -->
 
-<!-- フッターは共通 -->
+<!-- フッターここから -->
+<jsp:include page="/WEB-INF/include/footer.jsp" />
+<!-- フッターここまで -->
 
 </body>
 </html>

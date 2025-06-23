@@ -7,13 +7,13 @@
 <meta charset="UTF-8">
 <title>せんたくびより | ホーム画面</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+<link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
 </head>
 
 <body>
-<header>  
+<!-- ヘッダーここから -->
 <jsp:include page="/WEB-INF/include/header.jsp" />
-</header>
+<!-- ヘッダーここまで -->
 <main> 
 <div class="divide">
 	<section class="log">
@@ -144,6 +144,9 @@
 </div>
 </main>
 
+<!-- フッターここから -->
+<jsp:include page="/WEB-INF/include/footer.jsp" />
+<!-- フッターここまで -->
 <script src="${pageContext.request.contextPath}/js/home.js"></script>
 </body>
 </html>
