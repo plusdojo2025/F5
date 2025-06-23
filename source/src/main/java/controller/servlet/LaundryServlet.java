@@ -29,7 +29,7 @@ public class LaundryServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらトップサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		session.setAttribute("user_id", 1);
+		/* session.setAttribute("user_id", 1); */
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/servlet/TopServlet");
 			return;

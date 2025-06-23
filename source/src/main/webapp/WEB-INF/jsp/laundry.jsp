@@ -16,7 +16,10 @@
 </head>
 
 <body>
-<body>
+
+<header>
+<jsp:include page="/WEB-INF/include/header.jsp" />
+</header>
 	
 	<!-- 絞り込み条件プルダウン（ALLとお気に入り） -->
 	<form method="POST" action="" id="filterForm">
@@ -32,19 +35,24 @@
 	
 	<!-- 初期値を設定 -->
 	<c:set var="prevname" value="" />
-
+	<!-- clothesListを繰り返しで表示 -->
 	<c:forEach var="c" items="${clothesList}">
-
 		<!-- カテゴリー名が前回と違えば表示する -->
 		<c:if test="${prevname != c.category_name}">
 			<!-- カテゴリー名を表示 -->
-			<h2>カテゴリー名：${c.category_name}</h2>
+			<h2>${c.category_name}</h2>
 			<!-- 今回のカテゴリー名をprevnameにセットする -->
 			<c:set var="prevname" value="${c.category_name}" />
 		</c:if>
-
+		
+		<!-- 洗濯物画像の表示 -->
+		<img src = "${pageContext.request.contextPath}/Image_ClothesServlet? id= c.clothes_id">${c.clothes_id}
+		
 	</c:forEach>
-
+	
+<footer>
+<jsp:include page="/WEB-INF/include/footer.jsp" />
+</footer>
 
 	<script src=""></script>
 </body>
