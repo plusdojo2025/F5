@@ -20,8 +20,8 @@ public class HelpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
-				if (session.getAttribute("email") == null) {
-					response.sendRedirect(request.getContextPath() + "/LoginServlet");
+				if (session.getAttribute("user_id") == null) {
+					response.sendRedirect(request.getContextPath() + "/TopServlet");
 					return;
 				}
 

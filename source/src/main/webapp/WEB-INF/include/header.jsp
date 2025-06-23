@@ -8,7 +8,7 @@
 </div>
 <nav class="nav-menu">
 	<ul>
-        <li><a href="/F5/contoller/HomeServlet">ホーム</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">ホーム</a></li>
         <li class="arrow">▶</li>
         <li class="regist"><a href="${pageContext.request.contextPath}/LaundryRegistServlet">洗濯物登録</a></li>
         <li class="arrow">▶</li>
