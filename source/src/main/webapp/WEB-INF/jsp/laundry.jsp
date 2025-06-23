@@ -13,14 +13,17 @@
 	outline: 1px solid #FF0000;
 }
 
-.clothes-container {
+.clothes-container{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 20px;
 }
 
 .clothes-item {
-	flex: 0 0 calc(33.333% - 20px); /* 3列 */
+	/*
+	flex: 0 0 calc(33.333% - 20px);
+	*/
+	}
 </style>
 </head>
 
