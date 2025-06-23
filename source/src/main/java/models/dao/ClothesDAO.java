@@ -564,4 +564,55 @@ public class ClothesDAO {
 		// 結果を返す
 		return result;
 	}
+	
+	public Clothes findByNumber(int number) {
+	    Connection conn = null;
+	    Clothes cl = null;
+
+	    try {
+	        // JDBCドライバ読み込み
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	     // DBへ接続
+	        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+	     // numberで1件だけ検索するSQL文
+	        String sql = "SELECT clothes_id, clothes_img, category_id, remarks, users_id,favorite,created_at,updated_at "
+	                + "FROM clothes "
+	                + "WHERE clothes_id = ?";
+
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+	        pStmt.setInt(1, number);
+
+	        ResultSet rs = pStmt.executeQuery();
+
+	     // 検索結果があればBcオブジェクトに格納
+	        if (rs.next()) {
+	            cl = new Clothes(
+	                rs.getInt("clothes_id"),
+	                rs.getBytes("clothes_img"),
+	                rs.getInt("category_id"),
+	                rs.getString("remarks"),
+	                rs.getInt("users_id"),
+	                rs.getBoolean("favorite"),
+	                rs.getString("created_at"),	
+	                rs.getString("updated_at")
+	            		);
+	        }
+	    } catch (SQLException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    return cl;  // nullの可能性あり
+	}
 }
