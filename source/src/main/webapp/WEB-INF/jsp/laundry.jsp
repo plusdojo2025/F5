@@ -19,9 +19,8 @@
 
 <body>
 
-	<header>
-		<jsp:include page="/WEB-INF/include/header.jsp" />
-	</header>
+
+	<jsp:include page="/WEB-INF/include/header.jsp" />
 
 	<div class="clothes">
 
@@ -286,9 +285,9 @@
 		</div>
 	</div>
 
-	<footer>
-		<jsp:include page="/WEB-INF/include/footer.jsp" />
-	</footer>
+
+	<jsp:include page="/WEB-INF/include/footer.jsp" />
+
 
 	<script src="js/laundry.js"></script>
 </body>
