@@ -1,9 +1,13 @@
 @charset "UTF-8";
 /* すべてのページに適用-ヘッダー（ログイン前のヘッダーは個別で作ってます）  */
 .header {
-    background-color: #C9E4F4;
+   	background-color: #C9E4F4;
     padding: 30px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 .main-title {
     font-size: 60px;
@@ -14,6 +18,8 @@
     font-size: 30px;
     margin-top: 20px;
     color: #ffffff;
+    text-align: center;
+    width: 100%;
 }
 .nav {
     position: absolute;
@@ -41,9 +47,9 @@
 /* すべてのページに適用-ログイン*/
 .login_form {
     width :900px;
-    margin: 40px auto;
+    margin: 70px auto;
 }
-.form_row {
+.form_row{
     display: flex;
     align-items: center;
     margin-bottom: 40px;
@@ -71,7 +77,6 @@ button[type="submit"] {
     border-radius: 30px;
     font-size: 40px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-    cursor: pointer;
 }
 .user_regist_button {
     text-align: center;

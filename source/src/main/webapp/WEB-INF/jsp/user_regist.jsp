@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>新規登録 | せんたくびより</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/user_regist.css">
+    <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
+    <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/user_regist.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     </div>
     <nav class="nav">
         <ul>
-            <li><a href="${pageContext.request.contextPath}/TopServlet">戻る</a></li>
+             <li><a href="<%= request.getContextPath() %>/TopServlet">戻る</a></li>
         </ul>
     </nav>
 </header>

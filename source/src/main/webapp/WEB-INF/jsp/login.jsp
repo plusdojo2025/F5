@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン | せんたくびより</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
+    <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/login.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
   </section>
 </div>
 <div class="user_regist_button">
-    <a href="${pageContext.request.contextPath}/UserRegistServlet">新規登録はこちら</a>
+    <a href="<%= request.getContextPath() %>/UserRegistServlet">新規登録はこちら</a>
 </div>
 </main>
 <!-- メインここまで -->

@@ -4,7 +4,11 @@
 .header {
     background-color: #C9E4F4;
     padding: 30px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 .main-title {
     font-size: 60px;
@@ -15,6 +19,8 @@
     font-size: 30px;
     margin-top: 20px;
     color: #ffffff;
+    text-align: center;
+    width: 100%;
 }
 .nav {
     position: absolute;
