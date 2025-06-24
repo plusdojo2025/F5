@@ -45,7 +45,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 1}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -62,7 +62,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 1}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
@@ -80,7 +80,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 2}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -97,7 +97,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 2}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
@@ -115,7 +115,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 3}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -132,7 +132,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 3}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
@@ -150,7 +150,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -167,7 +167,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
@@ -185,7 +185,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -202,7 +202,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
@@ -220,7 +220,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 5}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -237,7 +237,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 5}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
@@ -255,7 +255,7 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 6}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
@@ -272,7 +272,7 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 6}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
