@@ -23,7 +23,7 @@
 <main>
 <div class="login_form">  
     <section>
-        <form id="form" action="/F5/LoginServlet" method="POST">
+        <form id="form" action="<%= request.getContextPath() %>/LoginServlet" method="POST">
             <div class="login_form_btm">
                 <div class="form_row">
                     <label for="email">メールアドレス</label>

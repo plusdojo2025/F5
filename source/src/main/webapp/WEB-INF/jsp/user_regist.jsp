@@ -27,7 +27,7 @@
 <main>
 <div class="user_regist_form">
     <section>
-        <form id="regist_form" action="UserRegistServlet" method="POST">
+        <form id="regist_form" action="<%= request.getContextPath() %>/UserRegistServlet" method="POST">
             <div class="login_form_btm">
                 <div class="regist_form_row">
                     <label for="nickname">ニックネーム</label>
