@@ -143,7 +143,7 @@ public class UsersDAO {
 //			private String updated_at;	 //更新日
 			
 			// SQL文を準備する 
-			String sql = "INSERT INTO Users VALUES (0, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO users VALUES (0, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -216,7 +216,7 @@ public class UsersDAO {
 					"root", "password");
 			conn.setAutoCommit(false); //トランザクション開始
 			// SQL文を準備する
-			String sql = "UPDATE Users SET password = ?,nickname = ?,email = ?,photo=?,created_at = ?,updated_at=? WHERE user_id=?";
+			String sql = "UPDATE users SET password = ?,nickname = ?,email = ?,photo=?,created_at = ?,updated_at=? WHERE user_id=?";
 			pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -308,7 +308,7 @@ public class UsersDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM Users WHERE user_id =?";
+			String sql = "DELETE FROM users WHERE user_id =?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
