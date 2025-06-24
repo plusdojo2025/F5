@@ -79,17 +79,18 @@ public class LaundryDetailUDServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("email") == null) {
-			response.sendRedirect(request.getContextPath() + "/TopServlet");
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			return;
 		}
 		
 		String action = request.getParameter("action");
 		ClothesDAO dao = new ClothesDAO();
 		
-		int userid = Integer.parseInt(request.getParameter("user_id"));
+		int userid = (int) session.getAttribute("user_id");
 		int clothesid = Integer.parseInt(request.getParameter("clothes_id"));
 		
 		if ("更新".equals(action)) {
@@ -128,7 +129,7 @@ public class LaundryDetailUDServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/LaundryServlet");
 			}
 			
-		}	else {
+		}	else if("削除".equals(action)){
 				Clothes clothes = new Clothes();
 				clothes.setClothes_id(clothesid);
 				clothes.setUser_id(userid);
