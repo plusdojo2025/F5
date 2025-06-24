@@ -98,7 +98,7 @@ public class ClothesDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -171,7 +171,7 @@ public class ClothesDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -258,7 +258,7 @@ public class ClothesDAO {
         	Class.forName("com.mysql.cj.jdbc.Driver");
         	
             // データベースに接続する
- 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+ 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
  					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
  					"root", "password");
 
@@ -375,7 +375,7 @@ public class ClothesDAO {
         	Class.forName("com.mysql.cj.jdbc.Driver");
         	
         	// データベース接続
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 						"root", "password");
 			
@@ -440,7 +440,7 @@ public class ClothesDAO {
         	Class.forName("com.mysql.cj.jdbc.Driver");
         	
         	// データベース接続
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F5?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f5?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 						"root", "password");
 			
