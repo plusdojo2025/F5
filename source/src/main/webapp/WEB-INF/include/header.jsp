@@ -8,13 +8,13 @@
 </div>
 <nav class="nav-menu">
 	<ul>
-        <li><a href="${pageContext.request.contextPath}/HomeServlet">ホーム</a></li>
+        <li><a href="<%= request.getContextPath() %>/HomeServlet">ホーム</a></li>
         <li class="arrow">▶</li>
-        <li class="regist"><a href="${pageContext.request.contextPath}/LaundryRegistServlet">洗濯物登録</a></li>
+        <li class="regist"><a href="<%= request.getContextPath() %>/LaundryRegistServlet">洗濯物登録</a></li>
         <li class="arrow">▶</li>
-        <li class="list"><a href="${pageContext.request.contextPath}/LaundryServlet">洗濯物一覧</a></li>
-        <li><a href="${pageContext.request.contextPath}/HelpServlet">ヘルプ</a></li>
-        <li class="logout"><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
+        <li class="list"><a href="<%= request.getContextPath() %>/LaundryServlet">洗濯物一覧</a></li>
+        <li><a href="<%= request.getContextPath() %>/HelpServlet">ヘルプ</a></li>
+        <li class="logout"><a href="<%= request.getContextPath() %>/LogoutServlet">ログアウト</a></li>
 	</ul>
 </nav>
 </header>
