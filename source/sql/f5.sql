@@ -8,6 +8,12 @@ photo LONGBLOB,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
+
+INSERT INTO users VALUES (0,'#SEplus2025SEplus','dojouser1','dojouser1@plusdojo.jp',null,null,null);
+INSERT INTO users VALUES (0,'#SEplus2025SEplus','dojouser2','dojouser2@plusdojo.jp',null,null,null);
+INSERT INTO users VALUES (0,'#SEplus2025SEplus','dojouser3','dojouser3@plusdojo.jp',null,null,null);
+INSERT INTO users VALUES (0,'#SEplus2025SEplus','dojouser4','dojouser4@plusdojo.jp',null,null,null);
+INSERT INTO users VALUES (0,'#SEplus2025SEplus','dojouser5','dojouser5@plusdojo.jp',null,null,null);
 /*洗濯表示カテゴリー*/						
 CREATE TABLE laundry_category_mst (							
 laundry_category_id INT AUTO_INCREMENT PRIMARY KEY,							
