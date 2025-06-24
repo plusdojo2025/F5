@@ -14,6 +14,7 @@ import models.dto.JoinLandry;
 
 public class ClothesDAO {
 	
+	
 	/* ユーザーが所持している全ての洗濯物を取得してリストにして返す */
 	public List<JoinLandry> getAllclothes(int user_id) {
 		Connection conn = null;
