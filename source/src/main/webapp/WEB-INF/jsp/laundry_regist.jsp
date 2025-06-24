@@ -15,11 +15,11 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-    	<form action="${pageContext.request.contextPath}/LaundryRegistServlet" method="POST" enctype="multipart/form-data">
+    	<form action="<%= request.getContextPath() %>/LaundryRegistServlet" method="POST" enctype="multipart/form-data">
     		<div class="left">
     			<div class="preview-upload">
 	    			<!-- 画像プレビュー -->
-	    			<img src="${pageContext.request.contextPath}/img/clothes.png" alt="デフォルト画像" width="150">
+	    			<img src="<%= request.getContextPath() %>/img/clothes.png" alt="デフォルト画像" width="150">
 	    			<!-- お気に入りチェックボックス -->
 	    			
 			        <label for="favorite" class="favorite-icon">
@@ -62,7 +62,7 @@
 	        			<c:if test="${mark.laundry_category_name == category.laundry_category_name}">
 	        				<label for="${mark.washing_id}" class="icon-label">
 	        				<input type="checkbox" name="washing_mark" id="${mark.washing_id}" value="${mark.washing_id}">
-	        				<img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}" width="35" height="auto">
+	        				<img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}" width="35" height="auto">
 	        				</label>
 	        			</c:if>
 	        		</c:forEach>

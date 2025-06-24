@@ -19,6 +19,7 @@ import models.dao.ClothesDAO;
 import models.dao.Laundry_categoryDAO;
 import models.dao.Washing_markDAO;
 import models.dto.Clothes;
+import models.dto.JoinLandry;
 import models.dto.Laundry_category;
 import models.dto.Washing_mark;
 
@@ -43,6 +44,17 @@ public class LaundryDetailUDServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/TopServlet");
 			return;
 		}
+		
+		// パラメータ取得
+		int userid = Integer.parseInt(request.getParameter("user_id"));
+		int clothesid = Integer.parseInt(request.getParameter("clothes_id"));
+		
+		// 登録情報を取得
+		ClothesDAO dao = new ClothesDAO();
+		List<JoinLandry> laundry = dao.GetLaundryUDSelect(userid, clothesid);
+		// リクエストスコープに格納
+		request.setAttribute("laundry", laundry);
+		
 		//洗濯カテゴリー（漂白など）をデータベースから取得
 		Laundry_categoryDAO lcdao = new Laundry_categoryDAO();
 		List<Laundry_category> laundry_categoryList = lcdao.getLaundryCategory();
@@ -80,12 +92,12 @@ public class LaundryDetailUDServlet extends HttpServlet {
 		int userid = Integer.parseInt(request.getParameter("user_id"));
 		int clothesid = Integer.parseInt(request.getParameter("clothes_id"));
 		
-		if ("update".equals(action)) {
+		if ("更新".equals(action)) {
 			Clothes clothes  = new Clothes();
 			clothes.setClothes_id(clothesid);
 			clothes.setUser_id(userid);
 			clothes.setCategory_id(Integer.parseInt(request.getParameter("category_id")));
-			clothes.setRemarks("remarks");
+			clothes.setRemarks(request.getParameter("remarks"));
 			clothes.setFavorite(Boolean.parseBoolean(request.getParameter("favorite")));
 			
 			// 画像処理
