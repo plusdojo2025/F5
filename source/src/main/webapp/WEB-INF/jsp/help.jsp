@@ -4,24 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/F5/css/help.css">
+<link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/help.css">
+<link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
 <title>せんたくびより | ヘルプ</title>
 </head>
 <body>
+<!-- ヘッダーここから -->
+	<jsp:include page="/WEB-INF/include/header.jsp" />
+<!-- ヘッダーここまで -->
 <main>
-	<h2 class="helptitle">せんたくびよりの使い方</h2>
+	<h1 class="helptitle">せんたくびよりの使い方</h1>
 		<div>
-			<h3 class="help_subtitle">洗濯表示</h3>
+			<h2 class="help_subtitle">洗濯表示</h2>
 			<ul class="help_explain">
-				<li>登録した洗濯物を確認しよう！</li>
-				<li>・画面上部の「洗濯物一覧」をクリックします。</li>
-				<li>・「洗濯物登録」で登録した洗濯物を確認できます。</li>
-				<li>・画像をクリックすると洗濯物の詳細を詳しく見れます。</li>
-				<li>・洗濯物の詳細から編集・削除をすることができます。</li>
+				<li>洗濯表示の意味を知ろう！</li>
+				<li>・画面上部の「ホーム」をクリックします。</li>
+				<li>・画面の洗濯表示をクリックします。</li>
+				<li>・画像をクリックすると洗濯表示の意味を見れます。</li>
 			</ul>
 		</div>
 	<div>
-		<h3 class="help_subtitle">洗濯物登録</h3>
+		<h2 class="help_subtitle">洗濯物登録</h2>
 		<ul class="help_explain">
 			<li>洗濯物を登録・確認しよう！</li>
 			<li>・画面上部の「洗濯物登録」をクリックします。</li>
@@ -31,7 +34,7 @@
 		</ul>
 		</div>
 	<div>
-		<h3 class="help_subtitle">洗濯物一覧</h3>
+		<h2 class="help_subtitle">洗濯物一覧</h2>
 		<ul class="help_explain">
 			<li>登録した洗濯物を確認しよう！</li>
 			<li>・画面上部の「洗濯物一覧」をクリックします。</li>
@@ -40,16 +43,9 @@
 			<li>・洗濯物の詳細から編集・削除をすることができます。</li>
 		</ul>
 	</div>
-	<div>
-		<h3 class="help_subtitle">マイページ</h3>
-		<ul class="help_explain">
-			<li>マイページを確認しよう！</li>
-			<li>・画面上部の「マイページ」をクリックします。</li>
-			<li>・登録されたユーザー情報を確認できます。</li>
-			<li>・「更新」ボタンをユーザー情報を更新できます。</li>
-			<li>・「削除」ボタンを押すと現在使用しているアカウントが削除されます。</li>
-		</ul>
-	</div>
 </main>
+<!-- フッターここから -->
+<jsp:include page="/WEB-INF/include/footer.jsp" />
+<!-- フッターここまで -->
 </body>
 </html>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>せんたくびより | ホーム画面</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+<link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/home.css">
 <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
 </head>
 
