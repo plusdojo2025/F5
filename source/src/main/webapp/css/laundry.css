@@ -53,3 +53,9 @@ body {
 	transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* --- ホバー時の色変化と少し大きくする --- */
+.clothes-item:hover {
+    background-color: #4f46e5;
+    transform: scale(1.05);
+    }
