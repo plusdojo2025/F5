@@ -8,8 +8,7 @@ photo LONGBLOB,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
-/*洗濯表示カテゴリー*/
-laundry_categoryテーブル							
+/*洗濯表示カテゴリー*/						
 CREATE TABLE laundry_category_mst (							
 laundry_category_id INT AUTO_INCREMENT PRIMARY KEY,							
 laundry_category_name VARCHAR(20)							
@@ -23,9 +22,9 @@ INSERT INTO laundry_category_mst (laundry_category_name) VALUES ('アイロン')
 INSERT INTO laundry_category_mst (laundry_category_name) VALUES ('クリーニング');
 
 /*カテゴリーテーブル*/
-CREATE TABLE category_mst (category_id INT AUTO_INCREMENT PRIMARY KEY,　category_name VARCHAR(20) NOT NULL);					
-category_id INT AUTO_INCREMENT PRIMARY KEY,					
-category_name VARCHAR(20) NOT NULL					
+CREATE TABLE category_mst (
+category_id INT AUTO_INCREMENT PRIMARY KEY,　
+category_name VARCHAR(20) NOT NULL);					
 );
 
 INSERT INTO category_mst (category_name) VALUES ('トップス');
