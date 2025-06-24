@@ -14,20 +14,29 @@
 <!-- ヘッダーここから -->
 <jsp:include page="/WEB-INF/include/header.jsp" />
 <!-- ヘッダーここまで -->
-<main> 
+<main>
+<div id="click-ex"> 
+	<p>洗濯表示をクリックすると説明が表示されます！</p>
+</div>
 <div class="divide">
+	<!-- ログの表示 -->
 	<section class="log">
 		<div class="catetitle">
 			<h2 id="news">お知らせ</h2>
 		</div>
 		<c:forEach var="log" items="${logList}">
+		<div class="log-area">
+			<p>${log.created_at}</p>
 			<p>${log.log_info}</p>
+		</div>
 		</c:forEach>
 	</section>
-	
+
+	<!-- 洗濯表示の表示 -->
 	<section class="washmark">
 	<div class="marktitle">
 	</div>
+			<!-- 家庭洗濯の表示 -->
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<div class="catetitle">
 					<c:if test="${luncate.laundry_category_name == '家庭洗濯'}">	
@@ -38,12 +47,13 @@
 		<div class="mark-grid">
 		<c:forEach var="mark" items="${Washing_markList}">
 		  <c:if test="${mark.laundry_category_id == 1}">
-		    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}"
+		    <img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}"
 		    class="washimg" data-info="${mark.washing_mark_info}" data-id="${mark.washing_id}">
 		  </c:if>
 		</c:forEach>
 		</div>
 		
+		<!-- 漂白の表示 -->
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == '漂白'}">	
@@ -55,7 +65,7 @@
 		<div class="mark-grid">
 		<c:forEach var="mark" items="${Washing_markList}">
 		  <c:if test="${mark.laundry_category_id == 2}">
-		    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}"
+		    <img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}"
 		    class="washimg" data-info="${mark.washing_mark_info}" data-id="${mark.washing_id}">
 		  </c:if>
 		</c:forEach>
@@ -71,12 +81,13 @@
 		<div class="mark-grid">
 		<c:forEach var="mark" items="${Washing_markList}">
 		  <c:if test="${mark.laundry_category_id == 3}">
-		    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}"
+		    <img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}"
 		    class="washimg" data-info="${mark.washing_mark_info}" data-id="${mark.washing_id}">
 		  </c:if>
 		</c:forEach>
 		</div>
 		
+		<!-- 自然乾燥の表示 -->
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == '自然乾燥'}">	
@@ -88,7 +99,7 @@
 		<div class="mark-grid">
 		<c:forEach var="mark" items="${Washing_markList}">
 		  <c:if test="${mark.laundry_category_id == 4}">
-		    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}"
+		    <img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}"
 		    class="washimg" data-info="${mark.washing_mark_info}" data-id="${mark.washing_id}">
 		  </c:if>
 		</c:forEach>
@@ -102,15 +113,17 @@
 			</c:forEach>
 		</div>
 		
+		<!-- アイロンの表示 -->
 		<div class="mark-grid">
 		<c:forEach var="mark" items="${Washing_markList}">
 		  <c:if test="${mark.laundry_category_id == 5}">
-		    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}"
+		    <img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}"
 		    class="washimg" data-info="${mark.washing_mark_info}" data-id="${mark.washing_id}">
 		  </c:if>
 		</c:forEach>
 		</div>
 		
+		<!-- クリーニングの表示 -->
 		<div class="catetitle">
 			<c:forEach var="luncate" items="${laundry_categoryList}">
 				<c:if test="${luncate.laundry_category_name == 'クリーニング'}">	
@@ -122,7 +135,7 @@
 		<div class="mark-grid">
 		<c:forEach var="mark" items="${Washing_markList}">
 		  <c:if test="${mark.laundry_category_id == 6}">
-		    <img src="${pageContext.request.contextPath}/ImageServlet?id=${mark.washing_id}"
+		    <img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}"
 		    class="washimg" data-info="${mark.washing_mark_info}" data-id="${mark.washing_id}">
 		  </c:if>
 		</c:forEach>
@@ -147,6 +160,6 @@
 <!-- フッターここから -->
 <jsp:include page="/WEB-INF/include/footer.jsp" />
 <!-- フッターここまで -->
-<script src="${pageContext.request.contextPath}/js/home.js"></script>
+<script src="<%= request.getContextPath() %>/js/home.js"></script>
 </body>
 </html>
