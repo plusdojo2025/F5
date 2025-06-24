@@ -54,7 +54,7 @@ washing_mark_number INT NOT NULL,
 FOREIGN KEY (laundry_category_id) REFERENCES laundry_category_mst (laundry_category_id)
 );
 
-洗濯物テーブル
+/*洗濯物テーブル*/
 CREATE TABLE clothes (
 clothes_id INT AUTO_INCREMENT PRIMARY KEY,
 clothes_img LONGBLOB,
