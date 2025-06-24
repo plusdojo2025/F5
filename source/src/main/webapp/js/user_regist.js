@@ -39,6 +39,12 @@ document.getElementById('regist_form').onsubmit = function(event) {
         errors.push('パスワードが一致しません。');
     }
 
+	// エラーがあれば表示して送信中止
+    if (errors.length > 0) {
+        output.innerHTML = errors.map(msg => `<div>${msg}</div>`).join('');
+        return;
+    }
+
     // 送信
     output.textContent = '';
     this.submit();

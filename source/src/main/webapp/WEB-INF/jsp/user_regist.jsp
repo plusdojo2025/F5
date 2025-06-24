@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>新規登録 | せんたくびより</title>
+    <title>せんたくびより | 新規登録</title>
     <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
     <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/user_regist.css">
 </head>

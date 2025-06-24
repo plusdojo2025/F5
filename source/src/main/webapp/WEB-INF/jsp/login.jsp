@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ログイン | せんたくびより</title>
+    <title>せんたくびより | ログイン</title>
     <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/common.css">
     <link rel = "stylesheet" href = "<%= request.getContextPath() %>/css/login.css">
 </head>
