@@ -96,3 +96,10 @@
     background-color: #807B84;
     color: #ffffff;
 }
+#output {
+  color: #000000;
+  text-align: center; 
+  margin-top: 70px;
+  font-weight: bold;
+  font-size: 25px;
+}

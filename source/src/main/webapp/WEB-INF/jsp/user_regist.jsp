@@ -46,6 +46,7 @@
                     <input type="password" name="password_check" id="password_check">
                 </div>
             </div>
+            <p id="output" style="color: #4A3E37;"></p> <!-- エラーメッセージ表示用 -->
             <div class="form_click">
                 <button type="submit">登録する</button>
                 <button type="reset">リセット</button>
@@ -59,5 +60,9 @@
 <!-- フッターここから -->
 <jsp:include page="/WEB-INF/include/footer.jsp" />
 <!-- フッターここから -->
+
+<!-- JavaScriptここから -->
+<script src="${pageContext.request.contextPath}/js/user_regist.js"></script>
+<!-- JavaScriptここまで -->
 </body>
 </html>

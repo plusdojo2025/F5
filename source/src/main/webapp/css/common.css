@@ -78,7 +78,7 @@ body {
 
 /* すべてのページに適用-フッター */
 footer {
-    text-align: right;
+text-align: right;
     padding: 30px;
     background-color: #ffffff;
     font-size: 25px;

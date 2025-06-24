@@ -49,5 +49,8 @@
 <jsp:include page="/WEB-INF/include/footer.jsp" />
 <!-- フッターここまで -->
 
+<!-- JavaScriptここから -->
+<script src="${pageContext.request.contextPath}/js/login.js"></script>
+<!-- JavaScriptここまで -->
 </body>
 </html>
