@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>洗濯物一覧 | TACOS</title>
-<link rel="stylesheet" href="css/laundry.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/laundry.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/common.css">
 
 <style>
 * {
@@ -30,9 +31,9 @@
 				<select name="filter"
 					onchange="document.getElementById('filterForm').action=this.value; this.form.submit();">
 					<!-- filterの条件がture(?)だった場合にselectedを付けて表示　false(:)の場合に’’空文字にする -->
-					<option value="/F5/LaundryServlet"
+					<option value="<%= request.getContextPath() %>/LaundryServlet"
 						${filter == 'all' ? 'selected' : ''}>ALL</option>
-					<option value="/F5/LaundrySearchServlet"
+					<option value="<%= request.getContextPath() %>/LaundrySearchServlet"
 						${filter == 'favorite' ? 'selected' : ''}>お気に入り</option>
 				</select>
 			</form>
@@ -44,12 +45,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 1}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -61,12 +62,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 1}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -79,12 +80,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 2}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -96,12 +97,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 2}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -114,12 +115,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 3}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -131,12 +132,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 3}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -149,12 +150,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -166,12 +167,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -184,12 +185,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -201,12 +202,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 4}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -219,12 +220,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 5}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -236,12 +237,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 5}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -254,12 +255,12 @@
 			<c:forEach var="c" items="${clothesList}">
 				<c:if test="${c.category_id == 6}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${c.user_id}">
 							<input type="hidden" name="clothes_id" value="${c.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${c.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
@@ -271,12 +272,12 @@
 			<c:forEach var="f" items="${favoriteList}">
 				<c:if test="${f.category_id == 6}">
 					<div class="clothes-item">
-						<form method="POST"
+						<form method="GET"
 							action="<%=request.getContextPath()%>/LaundryDetailUDServlet">
 							<input type="hidden" name="user_id" value="${f.user_id}">
 							<input type="hidden" name="clothes_id" value="${f.clothes_id}">
 							<img
-								src="${pageContext.request.contextPath}/Image_ClothesServlet?id=${f.clothes_id}"
+								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${f.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 					</div>
