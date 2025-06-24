@@ -80,7 +80,7 @@ public class UsersDAO {
 					"root", "password");
 
 	
-			String sql = "SELECT user_id,password,nickname,email,photo,created_at,updated_at FROM Users WHERE email = ?";
+			String sql = "SELECT user_id,password,nickname,email,photo,created_at,updated_at FROM users WHERE email = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, email);
 
