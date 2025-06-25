@@ -53,7 +53,7 @@
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
 						<%-- <p>clothes_id = ${c.clothes_id}</p> --%>
-						<c:out value="${c.clothes_id}" default="NULL"/>
+						<%-- <c:out value="${c.clothes_id}" default="NULL"/> --%>
 						
 					</div>
 				</c:if>
