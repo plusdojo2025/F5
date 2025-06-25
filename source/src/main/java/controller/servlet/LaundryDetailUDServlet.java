@@ -1,7 +1,6 @@
 package controller.servlet;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import models.dao.ClothesDAO;
 import models.dao.Laundry_categoryDAO;
 import models.dao.Washing_markDAO;
-import models.dto.Clothes;
 import models.dto.JoinLandry;
 import models.dto.Laundry_category;
 import models.dto.Washing_mark;
@@ -45,30 +42,9 @@ public class LaundryDetailUDServlet extends HttpServlet {
 			return;
 		}
 		
-		// パラメータ取得
-		int userid = Integer.parseInt(request.getParameter("user_id"));
-		int clothesid = Integer.parseInt(request.getParameter("clothes_id"));
 		
-		// 登録情報を取得
-		ClothesDAO dao = new ClothesDAO();
-		List<JoinLandry> laundry = dao.GetLaundryUDSelect(userid, clothesid);
-		// リクエストスコープに格納
-		request.setAttribute("laundry", laundry);
 		
-		//洗濯カテゴリー（漂白など）をデータベースから取得
-		Laundry_categoryDAO lcdao = new Laundry_categoryDAO();
-		List<Laundry_category> laundry_categoryList = lcdao.getLaundryCategory();
-		request.setAttribute("laundry_categoryList", laundry_categoryList);
-		
-		//洗濯表示をデータベースから取得する。
-		Washing_markDAO wdao = new Washing_markDAO();
-		//Washing_markDAOのgetWashing_mark()を呼び出す。
-		List<Washing_mark> Washing_markList = wdao.getWashing_mark();
-		
-		//洗濯マークををリクエストスコープに格納する
-		request.setAttribute("Washing_markList", Washing_markList);
-		
-		// 登録ページにフォワードする
+		// トップページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry_detail.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -86,65 +62,40 @@ public class LaundryDetailUDServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			return;
 		}
-		
-		String action = request.getParameter("action");
-		ClothesDAO dao = new ClothesDAO();
-		
-		int userid = (int) session.getAttribute("user_id");
+		// パラメータ取得
+		request.setCharacterEncoding("UTF-8");
+		int userid = Integer.parseInt(request.getParameter("user_id"));
 		int clothesid = Integer.parseInt(request.getParameter("clothes_id"));
 		
-		if ("更新".equals(action)) {
-			Clothes clothes  = new Clothes();
-			clothes.setClothes_id(clothesid);
-			clothes.setUser_id(userid);
-			clothes.setCategory_id(Integer.parseInt(request.getParameter("category_id")));
-			clothes.setRemarks(request.getParameter("remarks"));
-			clothes.setFavorite(Boolean.parseBoolean(request.getParameter("favorite")));
-			
-			// 画像処理
-			Part image_data = request.getPart("clothes_img");
-			byte[] clothes_img = null;
-			
-			if (image_data != null && image_data.getSize() > 0) {
-				try (InputStream inputStream = image_data.getInputStream()) {
-					clothes_img = inputStream.readAllBytes();
-				}
-			}
-			if (clothes_img == null) {
-		        clothes_img = getDefaultImage();
-		    }
-			
-			// 洗濯表示ID取得してwashingMarkIdsリストに格納
-			String[] markid = request.getParameterValues("washing_mark");
-			List<Integer> washingMarkIds = new ArrayList<>();
-			if (markid != null) {
-				for (int i=0; i<markid.length; i++) {
-					int value = Integer.parseInt(markid[i]);
-					washingMarkIds.add(value);
-				}
-			}
-			
-			boolean success = dao.update(clothes,  washingMarkIds);
-			if (success) {
-				response.sendRedirect(request.getContextPath() + "/LaundryServlet");
-			}
-			
-		}	else if("削除".equals(action)){
-				Clothes clothes = new Clothes();
-				clothes.setClothes_id(clothesid);
-				clothes.setUser_id(userid);
-				boolean success = dao.delete(clothes);
-				if (success) {
-					response.sendRedirect(request.getContextPath() + "/LaundryServlet");
-				}
+		// 登録情報を取得
+		ClothesDAO dao = new ClothesDAO();
+		List<JoinLandry> laundry = dao.GetLaundryUDSelect(userid, clothesid);
+		// リクエストスコープに格納
+		request.setAttribute("laundry", laundry);
+		
+		// JoinLandryのリストからwashing_mark_idを取得
+		List<Integer> selectedMarkIds = new ArrayList<>();
+		for (JoinLandry item : laundry) {
+			if (item.getWashing_mark_id() != 0) {
+				selectedMarkIds.add(item.getWashing_mark_id());
 			}
 		}
-	private byte[] getDefaultImage() throws IOException {
-		try (InputStream inputStream = getServletContext().getResourceAsStream("/img/clothes.png")) {
-			if (inputStream == null) {
-				throw new IOException("Default image not found");
-			}
-			return inputStream.readAllBytes();
-		}
+		request.setAttribute("selectedMarkIds", selectedMarkIds);
+		
+		//洗濯カテゴリー（漂白など）をデータベースから取得
+		Laundry_categoryDAO lcdao = new Laundry_categoryDAO();
+		List<Laundry_category> laundry_categoryList = lcdao.getLaundryCategory();
+		request.setAttribute("laundry_categoryList", laundry_categoryList);
+		
+		//洗濯表示をデータベースから取得する。
+		Washing_markDAO wdao = new Washing_markDAO();
+		//Washing_markDAOのgetWashing_mark()を呼び出す。
+		List<Washing_mark> Washing_markList = wdao.getWashing_mark();
+		
+		//洗濯マークををリクエストスコープに格納する
+		request.setAttribute("Washing_markList", Washing_markList);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/laundry_detail.jsp");
+		dispatcher.forward(request, response);
 	}
 }

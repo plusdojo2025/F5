@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-		<form action="<%= request.getContextPath() %>/LaundryDetailUDServlet" method="POST" enctype="multipart/form-data">
+		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST">
 		<c:set var="item" value="${laundry[0]}" />
 		<input type="hidden" name="clothes_id" value="${item.clothes_id}" />
 		<input type="hidden" name="user_id" value="${sessionScope.user_id}" />
@@ -65,8 +65,8 @@
         		<c:forEach var="mark" items="${Washing_markList}">
         			<c:if test="${mark.laundry_category_name == category.laundry_category_name}">
         				<label for="${mark.washing_id}" class="icon-label">
-        				<input type="checkbox" name="washing_mark" id="${mark.washing_id}" value="${mark.washing_id}">
-                           <c:if test="${selectedMarkIds.contains(mark.washing_id)}">checked</c:if>
+        				<input type="checkbox" name="washing_mark" id="${mark.washing_id}" value="${mark.washing_id}"
+                           <c:if test="${selectedMarkIds.contains(mark.washing_id)}">checked</c:if>>
         				<img src="<%= request.getContextPath() %>/ImageServlet?id=${mark.washing_id}" width="35" height="auto">
         				</label>
         			</c:if>
