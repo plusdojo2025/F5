@@ -74,10 +74,8 @@
 		</div>
 		</form>
 	</main>
-<footer>
-<jsp:include page="/WEB-INF/include/footer.jsp" />
-</footer>
 
+<jsp:include page="/WEB-INF/include/footer.jsp" />
 <script src="<%= request.getContextPath() %>/js/laundry_cud.js"></script>
 </body>
 </html>
