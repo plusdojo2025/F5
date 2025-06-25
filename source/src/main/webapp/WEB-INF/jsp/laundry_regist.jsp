@@ -19,7 +19,7 @@
     		<div class="left">
     			<div class="preview-upload">
 	    			<!-- 画像プレビュー -->
-	    			<img src="<%= request.getContextPath() %>/img/clothes.png" alt="デフォルト画像" width="150">
+	    			<img src="<%= request.getContextPath() %>/img/clothes.png" id="imagePreview" alt="デフォルト画像" width="150">
 	    			<!-- お気に入りチェックボックス -->
 	    			
 			        <label for="favorite" class="favorite-icon">
@@ -75,5 +75,7 @@
 <footer>
 <jsp:include page="/WEB-INF/include/footer.jsp" />
 </footer>
+
+<script src="<%= request.getContextPath() %>/js/laundry_cud.js"></script>
 </body>
 </html>

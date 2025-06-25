@@ -24,7 +24,7 @@
 				<!-- 画像プレビュー -->
 				
 				
-				<img src="<%= request.getContextPath() %>/Image_ClothesServlet?id=${item.clothes_id}" alt="画像" width="150">
+				<img src="<%= request.getContextPath() %>/Image_ClothesServlet?id=${item.clothes_id}" id="imagePreview" alt="画像" width="150">
 					
 				<!-- お気に入りチェックボックス -->
 				<label for="favorite" class="favorite-icon">
@@ -77,5 +77,7 @@
 <footer>
 <jsp:include page="/WEB-INF/include/footer.jsp" />
 </footer>
+
+<script src="<%= request.getContextPath() %>/js/laundry_cud.js"></script>
 </body>
 </html>
