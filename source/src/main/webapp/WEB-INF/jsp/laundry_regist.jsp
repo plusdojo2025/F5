@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-    	<form action="<%= request.getContextPath() %>/LaundryRegistServlet" method="POST" enctype="multipart/form-data">
+    	<form action="<%= request.getContextPath() %>/LaundryRegistServlet" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
     		<div class="left">
     			<div class="preview-upload">
 	    			<!-- 画像プレビュー -->

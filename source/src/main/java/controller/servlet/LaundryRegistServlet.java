@@ -33,7 +33,7 @@ public class LaundryRegistServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
@@ -64,6 +64,7 @@ public class LaundryRegistServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
@@ -84,7 +85,7 @@ public class LaundryRegistServlet extends HttpServlet {
 	    }
 		
 		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
+		
 		int category_id = Integer.parseInt(request.getParameter("category_id"));
 		String remarks = request.getParameter("remarks");
 		boolean favorite = Boolean.parseBoolean(request.getParameter("favorite"));

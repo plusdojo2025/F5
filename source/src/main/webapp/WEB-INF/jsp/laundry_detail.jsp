@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST">
+		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST" accept-charset="UTF-8">
 		<c:set var="item" value="${laundry[0]}" />
 		<input type="hidden" name="clothes_id" value="${item.clothes_id}" />
 		<input type="hidden" name="user_id" value="${sessionScope.user_id}" />
@@ -24,7 +24,7 @@
 				<!-- 画像プレビュー -->
 				
 				
-				<img src="<%= request.getContextPath() %>/ImageServlet?clothes_id=${item.clothes_id}" alt="画像" width="150">
+				<img src="<%= request.getContextPath() %>/Image_ClothesServlet?id=${item.clothes_id}" alt="画像" width="150">
 					
 				<!-- お気に入りチェックボックス -->
 				<label for="favorite" class="favorite-icon">
@@ -50,11 +50,7 @@
 			</select><br>
 			
 			<!-- メモ入力欄 -->
-			<textarea id="remarks" name="remarks" placeholder="メモ入力欄">
-				<c:if test="${not empty item}">
-					${item.remarks}
-				</c:if>
-			</textarea><br>
+			<textarea id="remarks" name="remarks" placeholder="メモ入力欄">${item.remarks}</textarea><br>
 		</div>
 		
 		<div class="right">
