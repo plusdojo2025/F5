@@ -49,7 +49,7 @@
             <p id="output" style="color: #4A3E37;"></p> <!-- エラーメッセージ表示用 -->
             <div class="form_click">
                 <button type="submit">登録する</button>
-                <button type="reset">リセット</button>
+                <button type="reset" id="reset">リセット</button>
             </div>
         </form>
     </section>

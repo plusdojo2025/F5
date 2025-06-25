@@ -1,3 +1,4 @@
+// エラーチェック
 document.getElementById('regist_form').onsubmit = function(event) {
     event.preventDefault();
 
@@ -49,3 +50,16 @@ document.getElementById('regist_form').onsubmit = function(event) {
     output.textContent = '';
     this.submit();
 };
+
+// リセットする際のアラート
+document.getElementById('reset').addEventListener('click', function(event) {
+	const confirmation = confirm('記入内容をリセットしますか？');
+	if (!confirmation) {
+    	event.preventDefault(); // キャンセル時にリセットを止める
+  	} else {
+	    const output = document.getElementById('output');
+	    if (output) {
+	      output.textContent = ''; // エラーメッセージを消す
+    	}
+  	}
+});
