@@ -52,7 +52,7 @@
 								src="<%=request.getContextPath()%>/Image_ClothesServlet?id=${c.clothes_id}"
 								width="150" height="150" onclick="this.parentElement.submit();">
 						</form>
-						<p>clothes_id = ${c.clothes_id}</p>
+						<%-- <p>clothes_id = ${c.clothes_id}</p> --%>
 						<c:out value="${c.clothes_id}" default="NULL"/>
 						
 					</div>
@@ -295,7 +295,7 @@
 	<script src="js/laundry.js"></script>
 	
 	<script>
-		console.log(${c.clothes_id});
+		/* console.log(${c.clothes_id}); */
 	</script>
 </body>
 
