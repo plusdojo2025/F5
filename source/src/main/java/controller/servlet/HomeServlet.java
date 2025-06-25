@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトするつまり不正アクセス防止
 				HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
-					response.sendRedirect(request.getContextPath() + "/LoginServlet");
+					response.sendRedirect(request.getContextPath() + "/TopServlet");
 					return;
 				}
 
