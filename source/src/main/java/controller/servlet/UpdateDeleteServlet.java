@@ -51,7 +51,7 @@ public class UpdateDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
@@ -86,6 +86,7 @@ public class UpdateDeleteServlet extends HttpServlet {
 			if (clothes_img == null) {
 				clothes_img = getDefaultImage();
 			}
+			clothes.setClothes_img(clothes_img);
 
 			// 洗濯表示ID取得してwashingMarkIdsリストに格納
 			String[] markid = request.getParameterValues("washing_mark");

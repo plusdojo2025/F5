@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST" accept-charset="UTF-8">
+		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
 		<c:set var="item" value="${laundry[0]}" />
 		<input type="hidden" name="clothes_id" value="${item.clothes_id}" />
 		<input type="hidden" name="user_id" value="${sessionScope.user_id}" />
