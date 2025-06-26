@@ -113,7 +113,13 @@ label.clothes_img {
 }
 
 /* 登録ボタン */
-input[type="submit"] {
+.action-submit {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* ボタンの間隔 */
+    margin-top: 30px;
+}
+.action-submit input[type="submit"] {
     background-color: #6CA9F9;
     color: white;
     border-radius: 10px;
@@ -124,4 +130,8 @@ input[type="submit"] {
     margin: auto;
     margin-top: 30px;
     font-size: 30px;
+}
+
+.action-submit input[type="submit"][value="削除"] {
+    background-color: #FF5656; 
 }

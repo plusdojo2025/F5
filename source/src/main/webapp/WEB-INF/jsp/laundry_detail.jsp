@@ -24,7 +24,7 @@
 				<!-- 画像プレビュー -->
 				
 				
-				<img src="<%= request.getContextPath() %>/Image_ClothesServlet?id=${item.clothes_id}" id="imagePreview" alt="画像" width="150">
+				<img src="<%= request.getContextPath() %>/Image_ClothesServlet?id=${item.clothes_id}" id="imagePreview" alt="画像" width="150" height="150">
 					
 				<!-- お気に入りチェックボックス -->
 				<label for="favorite" class="favorite-icon">
@@ -69,8 +69,10 @@
         		</c:forEach>
 	        </c:forEach><br>
 	        </div>
-	        <input type="submit" name="action" value="更新">
-            <input type="submit" name="action" value="削除">
+	        <div class="action-submit">
+		        <input type="submit" name="action" value="更新">
+	            <input type="submit" name="action" value="削除">
+            </div>
 		</div>
 		</form>
 	</main>

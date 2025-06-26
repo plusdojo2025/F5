@@ -15,11 +15,11 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-    	<form action="<%= request.getContextPath() %>/LaundryRegistServlet" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
+    	<form action="<%= request.getContextPath() %>/LaundryRegistServlet" method="POST" id="form" enctype="multipart/form-data" accept-charset="UTF-8">
     		<div class="left">
     			<div class="preview-upload">
 	    			<!-- 画像プレビュー -->
-	    			<img src="<%= request.getContextPath() %>/img/clothes.png" id="imagePreview" alt="デフォルト画像" width="150">
+	    			<img src="<%= request.getContextPath() %>/img/clothes.png" id="imagePreview" alt="デフォルト画像" width="150" height="150">
 	    			<!-- お気に入りチェックボックス -->
 	    			
 			        <label for="favorite" class="favorite-icon">
@@ -68,7 +68,9 @@
 	        		</c:forEach>
 		        </c:forEach><br>
 		        </div>
-		        <input type="submit" value="登録">
+		        <div class="action-submit">
+		        	<input type="submit" value="登録">
+		        </div>
 	        </div>
     	</form>
     </main>

@@ -17,6 +17,7 @@ import javax.servlet.http.Part;
 
 import models.dao.ClothesDAO;
 import models.dto.Clothes;
+import models.dto.JoinLandry;
 
 /**
  * Servlet implementation class UpdateDeleteServlet
@@ -82,9 +83,9 @@ public class UpdateDeleteServlet extends HttpServlet {
 				try (InputStream inputStream = image_data.getInputStream()) {
 					clothes_img = inputStream.readAllBytes();
 				}
-			}
-			if (clothes_img == null) {
-				clothes_img = getDefaultImage();
+			} else {
+				List<JoinLandry> laundry = dao.GetLaundryUDSelect(userid, clothesid);
+					clothes_img = laundry.get(0).getClothes_img();
 			}
 			clothes.setClothes_img(clothes_img);
 
@@ -114,14 +115,6 @@ public class UpdateDeleteServlet extends HttpServlet {
 		}
 	}
 
-	private byte[] getDefaultImage() throws IOException {
-		try (InputStream inputStream = getServletContext().getResourceAsStream("/img/clothes.png")) {
-			if (inputStream == null) {
-				throw new IOException("Default image not found");
-			}
-			return inputStream.readAllBytes();
-		}
-
-	}
+	
 
 }
