@@ -36,7 +36,7 @@
 		        
 		        
 		        <!-- 洗濯物のカテゴリ選択 -->
-		        <select id="category_id" name="category_id" required>
+		        <select id="category_id" name="category_id">
 		        	<option value="" disabled selected>衣類カテゴリー選択</option>
 		            <option value="1">トップス</option>
 		            <option value="2">ボトムス</option>
@@ -69,7 +69,7 @@
 		        </c:forEach><br>
 		        </div>
 		        <div class="action-submit">
-		        	<input type="submit" value="登録">
+		        	<input type="submit" id="registButton" value="登録">
 		        </div>
 	        </div>
     	</form>

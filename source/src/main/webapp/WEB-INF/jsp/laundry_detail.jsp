@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/include/header.jsp" />
 </header>
 	<main>
-		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
+		<form action="<%= request.getContextPath() %>/UpdateDeleteServlet" method="POST" id="form" enctype="multipart/form-data" accept-charset="UTF-8">
 		<c:set var="item" value="${laundry[0]}" />
 		<input type="hidden" name="clothes_id" value="${item.clothes_id}" />
 		<input type="hidden" name="user_id" value="${sessionScope.user_id}" />
@@ -70,8 +70,8 @@
 	        </c:forEach><br>
 	        </div>
 	        <div class="action-submit">
-		        <input type="submit" name="action" value="更新">
-	            <input type="submit" name="action" value="削除">
+		        <input type="submit" id="updateButton" name="action" value="更新">
+	            <input type="submit" id="deleteButton" name="action" value="削除">
             </div>
 		</div>
 		</form>
