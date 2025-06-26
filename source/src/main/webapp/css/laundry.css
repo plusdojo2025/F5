@@ -49,7 +49,6 @@ body {
 
 .clothes-item {
 	margin: 0 auto;
-	
 	transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -59,3 +58,11 @@ body {
     background-color: #4f46e5;
     transform: scale(1.05);
     }
+ 
+ .Flag {
+ 	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #807B84;
+ }
