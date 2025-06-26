@@ -18,3 +18,4 @@
 	</ul>
 </nav>
 </header>
+<script src="<%= request.getContextPath() %>/js/logout.js"></script>
