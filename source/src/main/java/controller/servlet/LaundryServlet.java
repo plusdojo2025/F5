@@ -31,7 +31,7 @@ public class LaundryServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		/* session.setAttribute("user_id", 1); */
 		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/servlet/TopServlet");
+			response.sendRedirect(request.getContextPath() + "/TopServlet");
 			return;
 		}
 		
@@ -64,7 +64,7 @@ public class LaundryServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		/* session.setAttribute("user_id", 1); *///☆
 		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/servlet/TopServlet");
+			response.sendRedirect(request.getContextPath() + "/TopServlet");
 			return;
 		}
 		/* セッションスコープ保持しているユーザーIDをint型へ変換 */

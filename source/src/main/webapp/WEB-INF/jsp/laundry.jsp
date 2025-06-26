@@ -54,11 +54,11 @@
 						</form>
 						<%-- <p>clothes_id = ${c.clothes_id}</p> --%>
 						<%-- <c:out value="${c.clothes_id}" default="NULL"/> --%>
-						
 					</div>
 				</c:if>
 			</c:forEach>
 		</div>
+		
 		<!-- お気に入りのみ表示 -->
 		<div class="clothes-container">
 			<c:forEach var="f" items="${favoriteList}">
