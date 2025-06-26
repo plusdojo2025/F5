@@ -34,7 +34,7 @@
                     <input type="password" name="password" id="password">
                 </div>
             </div>
-            <p id="output" style="color: #4A3E37;"></p> <!-- エラーメッセージ表示用 -->
+            <p id="output" style="color: #4A3E37;">${error}</p> <!-- エラーメッセージ表示用 -->
             <button type="submit">ログイン</button>
         </form>
   </section>
